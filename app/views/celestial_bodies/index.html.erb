@@ -1,0 +1,64 @@
+<%= render 'celestial_bodies/new_modal' %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="panel-title">Lista oggetti celesti</h1>
+  </div>
+  <div class="panel-body">
+	<% if current_user.role == 'admin' %>
+	<p>
+      Azioni disponibili:
+      <span>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#new-body-modal">Inserisci nuovo oggetto celeste</button>
+      </span>
+    </p>
+	<% end %>
+    <hr>
+	<%= search_form_for @q, { id: '' } do |f| %>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <%= f.label 'Cerca per nome' %>
+            <%= f.search_field :name_cont, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-4 col-sm-offset-4">
+          <div class="form-group">
+            <label for="order">Ordina risultati per</label>
+            <%= select_tag 'order', options_for_select([['Nessuno',''], ['Nome', 'name'], ['Tipologia','typology'], ['Grandezza','size'], ['Costellazione','constellation'], ['Numero di mappa', 'map_chart_number']], params[:order] || ''), class: 'form-control', onchange: "$('#celestial_body_search').submit();" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Tipologia</th>
+        <th>Grandezza</th>
+        <th>Costellazione</th>
+        <th>Numero mappa</th>
+        <th colspan="3">Azioni</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @celestial_bodies.each do |celestial_body| %>
+        <tr>
+          <td><%= celestial_body.name %></td>
+          <td><%= celestial_body.typology %></td>
+          <td><%= number_with_delimiter celestial_body.size, delimiter: '.', separator: ',' %></td>
+          <td><%= celestial_body.constellation %></td>
+          <td><%= celestial_body.map_chart_number %></td>
+          <td><%= link_to 'Visualizza', celestial_body %></td>
+		  <% if current_user.role == 'admin' %>
+          <td><%= link_to 'Modifica', edit_celestial_body_path(celestial_body) %></td>
+          <td><%= link_to 'Elimina', celestial_body, method: :delete, data: { confirm: 'Sei sicuro?' } %></td>
+          <% end %>
+		</tr>
+      <% end %>
+    </tbody>
+  </table>
+  <span><center><%= will_paginate @telescopes, previous_label: 'Precedente', next_label: 'Successivo' %></center></span>
+</div>

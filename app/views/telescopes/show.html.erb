@@ -1,0 +1,25 @@
+<!-- Vista per visualizzare un singolo telescopio -->
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Informazioni telescopio</div>
+      <div class="panel-body">
+        <p><span><strong>Nome:</strong></span> <%= @telescope.name %></p>
+        <p><span><strong>Brand:</strong></span> <%= @telescope.brand %></p>
+        <p><span><strong>Tipologia:</strong></span> <%= @telescope.typology %></p>
+        <p><span><strong>Descrizione:</strong></span> <%= @telescope.description %></p>
+        <p><span><strong>Risoluzione angolare:</strong></span> <%= @telescope.angular_resolution %></p>
+        <p><span><strong>Magnitudine:</strong></span> <%= @telescope.magnitude %></p>
+        <p><span><strong>Rapporto focale:</strong></span> <%= @telescope.focal_ratio %></p>
+        <p><span><strong>Cercatore:</strong></span> <%= @telescope.finderscope %></p>
+        <p><span><strong>Lunghezza focale:</strong></span> <%= @telescope.focal_length %></p>
+        <p><span><strong>Montatura:</strong></span> <%= @telescope.mount %></p>
+        <p><span><strong>Apertura:</strong></span> <%= @telescope.aperture %></p>
+        <p><span><strong>Note:</strong></span> <%= @telescope.notes %></p>
+        <%= link_to 'Modifica', edit_telescope_url(@telescope) %> |
+        <%= link_to 'Indietro', telescopes_path %>
+      </div>
+    </div>
+  </div>
+</div>

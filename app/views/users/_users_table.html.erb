@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <th>ID</th>
+    <th>Email</th>
+    <th>Nome</th>
+    <th>Cognome</th>
+    <th>Data di nascita</th>
+    <th>Scadenza iscrizione</th>
+    <th>Azioni</th>
+  </thead>
+  <tbody>
+    <% @users.each do |u| %>
+      <tr>
+        <td><%= u.id %></td>
+        <td><%= u.email %></td>
+        <td><%= u.name %></td>
+        <td><%= u.surname %></td>
+        <td><%= u.birth.strftime("%d/%m/%Y") %></td>
+        <td><%= u.subscription_expiration.strftime("%d/%m/%Y") %></td>
+        <td><%= link_to 'Modifica utente', user_path(id: u) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<span><center><%= will_paginate @users, previous_label: 'Precedente', next_label: 'Successivo' %></center></span>

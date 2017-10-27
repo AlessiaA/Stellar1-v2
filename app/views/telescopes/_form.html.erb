@@ -1,0 +1,15 @@
+<%= bootstrap_form_for(@telescope) do |f| %>
+  <%= f.text_field :name, label: 'Nome:' %>
+  <%= f.text_field :brand, label: 'Brand:' %>
+  <%= f.text_field :typology, label: 'Tipologia:' %>
+  <%= f.text_area :description, label: 'Descrizione:' %>
+  <%= f.text_field :angular_resolution, label: 'Risoluzione angolare:' %>
+  <%= f.text_field :magnitude, label: 'Magnitudine:' %>
+  <%= f.text_field :focal_ratio, label: 'Rapporto focale:' %>
+  <%= f.number_field :finderscope, label: 'Cercatore:' %>
+  <%= f.number_field :focal_length, label: 'Lunghezza focale:' %>
+  <%= f.number_field :mount, label: 'Montatura:' %>
+  <%= f.number_field :aperture, label: 'Apertura:' %>
+  <%= f.text_area :notes, label: 'Note:' %>
+  <%= f.submit 'Aggiorna' %>
+<% end %>

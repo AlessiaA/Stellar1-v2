@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <h1>Stellar1</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><h1 class="h4 text-center">Accesso area riservata</h1></div>
+      <div class="panel-body">
+        <%= flash[:alert] %>
+        <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.email_field :email %>
+            <%= f.password_field :password, autocomplete: "off" %>
+            <%= f.form_group do %>
+                <%= f.submit "Accedi" %>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

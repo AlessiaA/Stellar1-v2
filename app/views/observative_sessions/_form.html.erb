@@ -1,0 +1,52 @@
+<%= form_with(model: observative_session, local: true) do |form| %>
+  <% if observative_session.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(observative_session.errors.count, "error") %> prohibited this observative_session from being saved:</h2>
+
+      <ul>
+      <% observative_session.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :observative_session_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.number_field :category, id: :observative_session_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start %>
+    <%= form.datetime_select :start, id: :observative_session_start %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end %>
+    <%= form.datetime_select :end, id: :observative_session_end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :antoniadi %>
+    <%= form.number_field :antoniadi, id: :observative_session_antoniadi %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pickering %>
+    <%= form.number_field :pickering, id: :observative_session_pickering %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sky_transparency %>
+    <%= form.number_field :sky_transparency, id: :observative_session_sky_transparency %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

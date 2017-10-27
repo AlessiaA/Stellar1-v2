@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: observative_sessions
+#
+#  id               :integer          not null, primary key
+#  name             :string
+#  category         :integer
+#  start            :datetime
+#  end              :datetime
+#  antoniadi        :integer
+#  pickering        :integer
+#  sky_transparency :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  user_id          :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  category: 1
+  start: 2017-09-17 15:27:43
+  end: 2017-09-17 15:27:43
+  antoniadi: 1
+  pickering: 1
+  sky_transparency: 1
+  user_id: 1
+
+two:
+  name: MyString
+  category: 1
+  start: 2017-09-17 15:27:43
+  end: 2017-09-17 15:27:43
+  antoniadi: 1
+  pickering: 1
+  sky_transparency: 1
+  user_id: 1

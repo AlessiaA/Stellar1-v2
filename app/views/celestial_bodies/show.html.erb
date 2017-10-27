@@ -1,0 +1,18 @@
+<!-- Vista per visualizzare un singolo corpo celeste -->
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Informazioni corpo celeste</div>
+      <div class="panel-body">
+        <p><span><strong>Nome:</strong></span> <%= @celestial_body.name %></p>
+        <p><span><strong>Tipologia:</strong></span> <%= @celestial_body.typology %></p>
+        <p><span><strong>Grandezza:</strong></span> <%= @celestial_body.size %></p>
+        <p><span><strong>Costellazione:</strong></span> <%= @celestial_body.constellation %></p>
+        <p><span><strong>Numero mappa:</strong></span> <%= @celestial_body.map_chart_number %></p>
+        <%= link_to 'Modifica', edit_celestial_body_path(@celestial_body) %> |
+        <%= link_to 'Indietro', celestial_bodies_path %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+# Keep the development block for testing on your local machine only.
+development:
+  api_key: mZf3l_MXGl9vvSgyHYkH
+
+production:
+  api_key: mZf3l_MXGl9vvSgyHYkH
+  # ignored_exceptions:
+  #   - ActionController::RoutingError
+  #   - UncommentToIgnoreAnyExceptionNameListedHere

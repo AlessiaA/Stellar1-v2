@@ -1,0 +1,7 @@
+<%= bootstrap_form_for(@filter) do |f| %>
+  <%= f.text_field :name, label: 'Nome:' %>
+  <%= f.text_field :brand, label: 'Brand:' %>
+  <%= f.text_area :description, label: 'Descrizione:' %>
+  <%= f.text_area :notes, label: 'Note:' %>
+  <%= f.submit 'Aggiorna' %>
+<% end %>

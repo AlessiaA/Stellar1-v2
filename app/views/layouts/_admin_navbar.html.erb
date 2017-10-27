@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <%= link_to "STELLAR1", root_path, class: 'navbar-brand' %>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utenti <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Tutti", users_path %></li>
+                  <li><%= link_to "Tessere scadute", users_expired_path %></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Strumenti <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Binocoli", binoculars_path %></li>
+                  <li><%= link_to "Oculari", eyepieces_path %></li>
+                  <li><%= link_to "Filtri", filters_path %></li>
+                  <li><%= link_to "Telescopi", telescopes_path %></li>
+                </ul>
+              </li>
+              <li>
+                <%= link_to "Corpi Celesti", celestial_bodies_path %>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <p>Benvenuto <%= current_user.name %><br />
+				La tua tessera scade il <%= current_user.subscription_expiration.strftime("%d/%m/%Y") %></p>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>

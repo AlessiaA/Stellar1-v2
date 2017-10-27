@@ -1,0 +1,21 @@
+<!-- Vista per visualizzare un singolo oculare -->
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Informazioni oculare</div>
+      <div class="panel-body">
+        <p><span><strong>Nome:</strong></span> <%= @eyepiece.name %></p>
+        <p><span><strong>Brand:</strong></span> <%= @eyepiece.brand %></p>
+        <p><span><strong>Lunghezza focale:</strong></span> <%= @eyepiece.focal_length %></p>
+        <p><span><strong>Oculare:</strong></span> <%= @eyepiece.ocular %></p>
+        <p><span><strong>Campo di visione apparente:</strong></span> <%= @eyepiece.apparent_fov %></p>
+        <p><span><strong>Dimensione:</strong></span> <%= @eyepiece.size %></p>
+        <p><span><strong>Descrizione:</strong></span> <%= @eyepiece.description %></p>
+        <p><span><strong>Note:</strong></span> <%= @eyepiece.notes %></p>
+        <%= link_to 'Modifica', edit_eyepiece_url(@eyepiece) %> |
+        <%= link_to 'Indietro', eyepieces_path %>
+      </div>
+    </div>
+  </div>
+</div>

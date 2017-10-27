@@ -1,0 +1,41 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                      :integer          not null, primary key
+#  email                   :string           default(""), not null
+#  encrypted_password      :string           default(""), not null
+#  reset_password_token    :string
+#  reset_password_sent_at  :datetime
+#  remember_created_at     :datetime
+#  sign_in_count           :integer          default(0), not null
+#  current_sign_in_at      :datetime
+#  last_sign_in_at         :datetime
+#  current_sign_in_ip      :inet
+#  last_sign_in_ip         :inet
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  role                    :integer
+#  name                    :string
+#  surname                 :string
+#  birth                   :date
+#  subscription_expiration :date
+#
+
+admin_user:
+  email: example@example.com
+  name: John
+  role: :admin
+  surname: Doe
+  birth: 1990-03-21
+  subscription_expiration: 2018-02-03
+  encrypted_password: <%= User.new.send(:password_digest, 'example') %>
+
+simple_user:
+  email: mail@example.com
+  name: James
+  role: :user
+  surname: Morgan
+  birth: 1970-05-01
+  subscription_expiration: 2018-01-29
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>

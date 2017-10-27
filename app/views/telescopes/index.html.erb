@@ -1,0 +1,117 @@
+<%= render 'telescopes/new_modal' %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+  <% if current_user.role == 'admin' %>
+    <h1 class="panel-title">Gestione Telescopi</h1>
+	<% else %>
+	<h1 class="panel-title">Telescopi</h1>
+	<% end %>
+  </div>
+  <div class="panel-body">
+    <p>Lista telescopi magazzino</p>
+	<% if current_user.role == 'admin' %>
+    <p>
+      Azioni disponibili:
+      <span>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#new-telescope-modal">Inserisci nuovo telescopio</button>
+      </span>
+    </p>
+	<% end %>
+    <hr>
+	<%= search_form_for @q, { id: '' } do |f| %>
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="form-group">
+            <%= f.label :name_cont, 'Cerca per nome' %>
+            <%= f.search_field :name_cont, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group">
+            <%= f.label :brand_cont, 'Cerca per brand' %>
+            <%= f.search_field :brand_cont, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-4 col-sm-offset-4">
+          <div class="form-group">
+            <label for="order">Ordina risultati per</label>
+            <%= select_tag 'order', options_for_select([['Nessuno',''], ['Nome', 'name'], ['Risoluzione angolare','angular_resolution'], ['Magnitudine','magnitude'], ['Rapporto Focale','focal_ratio'], ['Cercatore','finderscope'], ['Lunghezza Focale', 'focal_length'], ['Apertura','aperture']], params[:order] || ''), class: 'form-control', onchange: "$('#telescope_search').submit();" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="form-group">
+            <%= f.label 'Risoluzione angolare' %>
+            <%= f.search_field :angular_resolution_gteq, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group">
+            <%= f.label 'Magnitudine' %>
+            <%= f.search_field :magnitude_gteq, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group">
+            <%= f.label 'Rapporto focale' %>
+            <%= f.search_field :focal_ratio_gteq, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group">
+            <%= f.label 'Cercatore' %>
+            <%= f.search_field :finderscope_gteq, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-1 col-sm-offset-3">
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <%= f.submit 'Filtra', class: 'btn btn-default form-control' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Brand</th>
+        <th>Tipologia</th>
+        <th>Descrizione</th>
+        <th>Risoluzione angolare</th>
+        <th>Magnitudine</th>
+        <th>Rapporto focale</th>
+        <th>Cercatore</th>
+        <th>Lunghezza focale</th>
+        <th>Apertura</th>
+        <th colspan="3">Azioni</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @telescopes.each do |telescope| %>
+        <tr>
+          <td><%= telescope.name %></td>
+          <td><%= telescope.brand %></td>
+          <td><%= telescope.typology %></td>
+          <td><%= telescope.description %></td>
+          <td><%= number_with_delimiter telescope.angular_resolution, separator: ',' %></td>
+          <td><%= number_with_delimiter telescope.magnitude, separator: ',' %></td>
+          <td><%= number_with_delimiter telescope.focal_ratio, separator: ','%></td>
+          <td><%= telescope.finderscope %></td>
+          <td><%= telescope.focal_length %></td>
+          <td><%= telescope.aperture %></td>
+          <td><%= link_to 'Mostra', telescope %></td>
+		  <% if current_user.role == 'admin'%>
+          <td><%= link_to 'Modifica', edit_telescope_path(telescope) %></td>
+          <td><%= link_to 'Elimina', telescope, method: :delete, data: { confirm: 'Sei sicuro?' } %></td>
+		  <% end %>
+		</tr>
+      <% end %>
+    </tbody>
+  </table>
+  <span><center><%= will_paginate @telescopes, previous_label: 'Precedente', next_label: 'Successivo' %></center></span>
+</div>

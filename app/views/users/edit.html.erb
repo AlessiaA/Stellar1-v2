@@ -1,0 +1,18 @@
+<!-- Vista per modifica un singolo utente -->
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Modifica utente</div>
+      <div class="panel-body">
+        <%= bootstrap_form_for @user do |f| %>
+          <%= f.text_field :name, label: 'Nome' %>
+          <%= f.text_field :surname, label: 'Cognome' %>
+          <%= f.date_field :birth, label: 'Data di nascita' %>
+          <%= f.date_field :subscription_expiration, label: 'Data scadenza iscrizione', start_year: Date.today.year + 1, end_year: Date.today.year + 1 %>
+          <%= f.submit "Aggiorna" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

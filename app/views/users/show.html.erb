@@ -1,0 +1,16 @@
+<!-- Vista per visualizzare un singolo utente -->
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Informazioni utente</div>
+      <div class="panel-body">
+        <p><span><strong>Nome:</strong></span> <%= @user.name %></p>
+        <p><span><strong>Cognome:</strong></span> <%= @user.surname %></p>
+        <p><span><strong>Data di nascita:</strong></span> <%= @user.birth.strftime("%d/%m/%Y") %></p>
+        <p><span><strong>Scadenza iscrizione:</strong></span> <%= @user.subscription_expiration.strftime("%d/%m/%Y") %></p>
+        <%= link_to 'Modifica', edit_user_url(@user) %>
+      </div>
+    </div>
+  </div>
+</div>

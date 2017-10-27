@@ -1,0 +1,18 @@
+<!-- Vista per visualizzare un singolo binocolo -->
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Informazioni binocolo</div>
+      <div class="panel-body">
+        <p><span><strong>Nome:</strong></span> <%= @binocular.name %></p>
+        <p><span><strong>Brand:</strong></span> <%= @binocular.brand %></p>
+        <p><span><strong>Descrizione:</strong></span> <%= @binocular.description %></p>
+        <p><span><strong>Ingrandimenti:</strong></span> <%= @binocular.magnifications %></p>
+        <p><span><strong>Note:</strong></span> <%= @binocular.notes %></p>
+        <%= link_to 'Modifica', edit_binocular_url(@binocular) %> |
+        <%= link_to 'Indietro', binoculars_path %>
+      </div>
+    </div>
+  </div>
+</div>

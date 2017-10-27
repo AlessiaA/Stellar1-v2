@@ -1,0 +1,113 @@
+<%= render 'eyepieces/new_modal' %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+	<% if current_user.role == 'admin' %>
+    <h1 class="panel-title">Gestione Oculari</h1>
+	<% else %>
+	<h1 class="panel-title">Oculari</h1>
+	<% end %>
+  </div>
+  <div class="panel-body">
+    <p>Lista oculari magazzino</p>
+	<% if current_user.role == 'admin' %>
+    <p>
+      Azioni disponibili:
+      <span>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#new-filter-modal">Inserisci nuovo oculare</button>
+      </span>
+    </p>
+	<% end %>
+    <hr>
+	<%= search_form_for @q, { id: '' } do |f| %>
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="form-group">
+            <%= f.label :name_cont, 'Cerca per nome' %>
+            <%= f.search_field :name_cont, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group">
+            <%= f.label :brand_cont, 'Cerca per brand' %>
+            <%= f.search_field :brand_cont, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-4 col-sm-offset-4">
+          <div class="form-group">
+            <label for="order">Ordina risultati per</label>
+            <%= select_tag 'order', options_for_select([['Nessuno',''], ['Nome', 'name'], ['Lunghezza focale','focal_length'], ['Oculare','ocular'], ['Campo visione apparente','apparent_fov'], ['Dimensione','size']], params[:order] || ''), class: 'form-control', onchange: "$('#eyepiece_search').submit();" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="form-group">
+            <%= f.label 'Lunghezza focale' %>
+            <%= f.search_field :focal_length_gteq, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group">
+            <%= f.label 'Oculare' %>
+            <%= f.search_field :ocular_gteq, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group">
+            <%= f.label 'Campo visione app.' %>
+            <%= f.search_field :apparent_fov_gteq, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group">
+            <%= f.label 'Dimensione' %>
+            <%= f.search_field :size_gteq, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-1 col-sm-offset-3">
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <%= f.submit 'Filtra', class: 'btn btn-default form-control' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Brand</th>
+        <th>Descrizione</th>
+        <th>Lunghezza focale</th>
+        <th>Oculare</th>
+        <th>Campo di visione apparente</th>
+        <th>Dimensione</th>
+        <th>Note</th>
+        <th colspan="3">Azioni</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @eyepieces.each do |eyepiece| %>
+        <tr>
+          <td><%= eyepiece.name %></td>
+          <td><%= eyepiece.brand %></td>
+          <td><%= eyepiece.description %></td>
+          <td><%= number_with_delimiter eyepiece.focal_length, separator: ',' %></td>
+          <td><%= number_with_delimiter eyepiece.ocular, separator: ',' %></td>
+          <td><%= number_with_delimiter eyepiece.apparent_fov, separator: ',' %></td>
+          <td><%= number_with_delimiter eyepiece.size, separator: ',' %></td>
+          <td><%= eyepiece.notes %></td>
+          <td><%= link_to 'Mostra', eyepiece %></td>
+		  <% if current_user.role == 'admin' %>
+          <td><%= link_to 'Modifica', edit_eyepiece_path(eyepiece) %></td>
+          <td><%= link_to 'Elimina', eyepiece, method: :delete, data: { confirm: 'Sei sicuro?' } %></td>
+          <% end %>
+		</tr>
+      <% end %>
+    </tbody>
+  </table>
+  <span><center><%= will_paginate @eyepieces, previous_label: 'Precedente', next_label: 'Successivo' %></center></span>
+</div>

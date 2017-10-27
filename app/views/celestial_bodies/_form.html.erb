@@ -1,0 +1,8 @@
+<%= bootstrap_form_for(@celestial_body) do |f| %>
+  <%= f.text_field :name, label: 'Nome:' %>
+  <%= f.text_field :typology, label: 'Tipologia:' %>
+  <%= f.number_field :size, step: '0.01', label: 'Grandezza:' %>
+  <%= f.text_field :constellation, label: 'Costellazione:' %>
+  <%= f.number_field :map_chart_number, step: '1', label: 'Numero mappa:' %>
+  <%= f.submit 'Conferma' %>
+<% end %>

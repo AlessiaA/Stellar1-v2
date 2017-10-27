@@ -1,0 +1,6 @@
+<%= bootstrap_form_for(@outing) do |f| %>
+  <%= f.date_field :day, label: 'Giorno:' %>
+  <%= f.text_field :location, label: 'Luogo:' %>
+  <%= f.time_field :time, label: 'Ora:' %>
+  <%= f.submit 'Invia' %>
+<% end %>

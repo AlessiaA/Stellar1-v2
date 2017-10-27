@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: eyepieces
+#
+#  id           :integer          not null, primary key
+#  name         :string
+#  focal_length :decimal(, )
+#  ocular       :decimal(, )
+#  apparent_fov :decimal(, )
+#  size         :decimal(, )
+#  description  :text
+#  notes        :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  brand        :string
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  brand: MyString
+  focal_length: 9.99
+  ocular: 9.99
+  apparent_fov: 9.99
+  size: 9.99
+  description: MyText
+  notes: MyText
+
+two:
+  name: MyString
+  brand: MyString
+  focal_length: 9.99
+  ocular: 9.99
+  apparent_fov: 9.99
+  size: 9.99
+  description: MyText
+  notes: MyText

@@ -1,0 +1,53 @@
+<%= render 'users/new_modal' %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="panel-title">Gestione utenti</h1>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="h4">Lista membri iscritti</h2>
+        <p>
+          <strong>Azioni disponibili:</strong>
+          <span>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#new-user-modal">Inserisci nuovo membro</button>
+          </span>
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <%= search_form_for @q, { url: '/', id: ''} do |f| %>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <%= f.label :name_cont, 'Cerca nome' %>
+            <%= f.search_field :name_cont, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :surname_cont, 'Cerca cognome' %>
+            <%= f.search_field :surname_cont, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <%= f.label :email_cont, 'Cerca email' %>
+            <%= f.search_field :email_cont, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group">
+            <label for="order">Ordina risultati per</label>
+            <%= select_tag 'order', options_for_select([['Nessuno',''], ['Nome', 'name'], ['Cognome','surname'], ['Scadenza iscrizione','subscription_expiration']], params[:order] || ''), class: 'form-control', onchange: "$('#user_search').submit();" %>
+          </div>
+        </div>
+        <div class="col-sm-1">
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <%= f.submit 'Filtra', class: 'btn btn-default form-control' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <%= render 'users/users_table' %>
+</div>

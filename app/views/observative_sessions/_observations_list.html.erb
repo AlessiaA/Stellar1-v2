@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Oss. nr.</th>
+          <th>Descrizione</th>
+          <th>Ora inizio</th>
+          <th>Stato</th>
+          <th>Oggetto celeste</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @observations.each_with_index do |ob, i| %>
+          <tr>
+            <td>#<%= i + 1 %></td>
+            <td><%= ob.description %></td>
+            <td><%= ob.start_time.strftime "%d/%m/%Y %H:%M" %></td>
+            <td><span class="label label-default"><%= ob.completed ? "COMPLETATA" : "NON EFFETTUATA" %></span></td>
+            <td><%= link_to ob.celestial_body.name, celestial_body_path(ob.celestial_body) %></td>
+            <td><%= ob.notes %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

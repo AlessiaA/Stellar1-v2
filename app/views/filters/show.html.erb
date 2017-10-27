@@ -1,0 +1,17 @@
+<!-- Vista per visualizzare un singolo filtro -->
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Informazioni filtro</div>
+      <div class="panel-body">
+        <p><span><strong>Nome:</strong></span> <%= @filter.name %></p>
+        <p><span><strong>Brand:</strong></span> <%= @filter.brand %></p>
+        <p><span><strong>Descrizione:</strong></span> <%= @filter.description %></p>
+        <p><span><strong>Note:</strong></span> <%= @filter.notes %></p>
+        <%= link_to 'Modifica', edit_filter_url(@filter) %> |
+        <%= link_to 'Indietro', filters_path %>
+      </div>
+    </div>
+  </div>
+</div>

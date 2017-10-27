@@ -1,0 +1,10 @@
+<%= bootstrap_form_for @user do |f| %>
+  <%= f.email_field :email, label: 'Indirizzo mail' %>
+  <%= f.text_field :name, label: 'Nome' %>
+  <%= f.text_field :surname, label: 'Cognome' %>
+  <%= f.date_field :birth, label: 'Data di nascita' %>
+  <%= f.date_field :subscription_expiration, label: 'Data scadenza iscrizione', min: Date.today + 1.year, value: Date.today + 1.year %>
+  <%= f.password_field :password, label: 'Imposta una password' %>
+  <%= f.password_field :confirm_password, label: 'Conferma la password' %>
+  <%= f.submit "Inserisci" %>
+<% end %>

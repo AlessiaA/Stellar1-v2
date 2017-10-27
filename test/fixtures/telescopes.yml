@@ -1,0 +1,50 @@
+# == Schema Information
+#
+# Table name: telescopes
+#
+#  id                 :integer          not null, primary key
+#  brand              :string
+#  name               :string
+#  description        :text
+#  notes              :text
+#  angular_resolution :float
+#  magnitude          :float
+#  focal_ratio        :float
+#  finderscope        :integer
+#  focal_length       :integer
+#  mount              :integer
+#  aperture           :integer
+#  typology           :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  name: MyString
+  description: MyText
+  notes: MyText
+  angular_resolution: 1.5
+  magnitude: 1.5
+  focal_ratio: 1.5
+  finderscope: 1
+  focal_length: 1
+  mount: 1
+  aperture: 1
+  typology: MyString
+
+two:
+  brand: MyString
+  name: MyString
+  description: MyText
+  notes: MyText
+  angular_resolution: 1.5
+  magnitude: 1.5
+  focal_ratio: 1.5
+  finderscope: 1
+  focal_length: 1
+  mount: 1
+  aperture: 1
+  typology: MyString

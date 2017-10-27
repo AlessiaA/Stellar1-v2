@@ -1,0 +1,49 @@
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ .pl-0 {
+     padding-left: 0 !important;
+ }
+ 
+ .navbar {
+	border:2px solid #2681cf;
+	box-shadow: 4px 4px 2px #AAAAAA;
+ }
+ 
+ nav p {
+	margin-top:15px;
+ }
+ 
+ .navbar-header {
+	height:115px;
+ }
+ 
+.navbar-header .navbar-brand {
+	display:inline-block;
+	height:110px;
+	line-height:4.5em;
+} 
+
+.navbar-nav {
+	height:115px;
+}
+
+.navbar-nav li a {
+	display:inline-block;
+	line-height:5.7em;
+}
+
+.navbar-right li a {
+	line-height:1em;
+}
+
+
+.panel-default {
+	width:80%;
+	display:inline-block;
+}
+
+.panel-right {
+	width:15%;
+	display:inline-block;
+}

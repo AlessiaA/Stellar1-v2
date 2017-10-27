@@ -1,0 +1,2 @@
+module BinocularsHelper
+end

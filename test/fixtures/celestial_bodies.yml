@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: celestial_bodies
+#
+#  id               :integer          not null, primary key
+#  name             :string
+#  typology         :string
+#  size             :float
+#  constellation    :string
+#  map_chart_number :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  typology: MyString
+  size: 1.5
+  constellation: MyString
+  map_chart_number: 1
+
+two:
+  name: MyString
+  typology: MyString
+  size: 1.5
+  constellation: MyString
+  map_chart_number: 1

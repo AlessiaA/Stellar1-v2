@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading"><div class="clearfix"><h2 class="h3 pull-left"><%= @observative_session.name %></h2><div class="pull-right"><%= link_to 'Torna alla lista di sessioni osservative', observative_sessions_path %></div></div></div>
+      <div class="panel-body">
+        <h3 class="h4">Informazioni sessione</h3>
+        <p>
+          <strong>Sessione osservativa effettuata da:</strong>
+          <%= link_to @user.name + " " + @user.surname, user_path(@user) %>
+        </p>
+        <p>
+          <strong>Inizio:</strong>
+          <%= @observative_session.start.strftime "%d/%m/%Y %H:%M" %>
+        </p>
+        <p>Seeing astronomico</p>
+        <p>
+          <strong>Scala Antoniadi:</strong>
+          <%= @observative_session.antoniadi %>
+        </p>
+        <p>
+          <strong>Pickering:</strong>
+          <%= @observative_session.pickering %>
+        </p>
+        <p>
+          <strong>Trasparenza cielo:</strong>
+          <%= @observative_session.sky_transparency %>
+        </p>
+        <hr>
+        <h3 class="h4">Osservazioni della sessione</h3>
+        <%= render 'observations_list' %>
+      </div>
+  </div>
+</div>
