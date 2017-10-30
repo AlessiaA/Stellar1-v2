@@ -12,8 +12,8 @@ user.save
 
 User.first.update(role: :admin)
 
-NUMBER_OF_USERS = 4000
-NUMBER_OF_ENTITIES = 1500
+NUMBER_OF_USERS = 100
+NUMBER_OF_ENTITIES = 500
 
 NUMBER_OF_USERS.times do |i|
   user = User.new

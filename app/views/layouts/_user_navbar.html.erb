@@ -26,9 +26,25 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
 				<p>Benvenuto <%= current_user.name %><br />
-				La tua tessera scade il <%= current_user.subscription_expiration.strftime("%d/%m/%Y") %></p>
-              <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+				<% if Date.today.between?(current_user.subscription_expiration-15, current_user.subscription_expiration) %>
+				<span class="expiring">
+				La tua tessera scade il <%= current_user.subscription_expiration.strftime("%d/%m/%Y") %>
+				</span>
+				<% elsif Date.today > current_user.subscription_expiration %>
+				<span class="expiring">
+				<strong>La tua tessera è scaduta il <%= current_user.subscription_expiration.strftime("%d/%m/%Y") %></strong>
+				</span>
+				<% else %>
+				La tua tessera scade il <%= current_user.subscription_expiration.strftime("%d/%m/%Y") %>
+				<% end %>
+				</p>
+			  <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
+<% if Date.today.between?(current_user.subscription_expiration+30, current_user.subscription_expiration) %>
+<div class="subscription_expired">
+<p>La tua tessera è scaduta ti preghiamo di rinnovarla entro 1 mese.</p>
+</div>
+<% end %>

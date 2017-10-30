@@ -1,6 +1,14 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ body {
+	background: #144269 no-repeat;
+}
+ 
+ .container {
+	background-color:#FFFFFF;
+ }
+ 
  .pl-0 {
      padding-left: 0 !important;
  }
@@ -38,12 +46,32 @@
 }
 
 
-.panel-default {
+#observative_sessions {
 	width:80%;
 	display:inline-block;
 }
 
-.panel-right {
-	width:15%;
+#outings {
+	width:18%;
 	display:inline-block;
+	float:right;
+}
+
+.expiring {
+	color:#FF0000;
+}
+
+.subscription_expired {
+	font-size:2.5em;
+	background:#FF0000;
+	color: #FFFFFF;
+	padding:0.5em;
+}
+
+.month_expired {
+	padding:1em;
+	font-size:2em;
+	background:#FF0000;
+	color:#FFFFFF;
+	margin-bottom:0.6em;
 }

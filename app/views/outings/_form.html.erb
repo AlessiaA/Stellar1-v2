@@ -1,6 +1,30 @@
-<%= bootstrap_form_for(@outing) do |f| %>
-  <%= f.date_field :day, label: 'Giorno:' %>
-  <%= f.text_field :location, label: 'Luogo:' %>
-  <%= f.time_field :time, label: 'Ora:' %>
-  <%= f.submit 'Invia' %>
+<%= form_with(model: outing, local: true) do |form| %>
+<% if outing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(outing.errors.count, "error") %> prohibited this outing from being saved:</h2>
+
+      <ul>
+      <% outing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= form.label :day %>
+    <%= form.date_field :day, id: :outing_day %>
+  </div>
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location, id: :outing_location %>
+  </div>
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.time_field :time, id: :outing_time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 <% end %>

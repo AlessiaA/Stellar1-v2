@@ -1,3 +1,9 @@
+<% if Date.today > current_user.subscription_expiration+31.days %>
+<div class="month_expired">
+	<p>La tua sottoscrizione è scaduta da più di un mese non puoi più accedere a queste informazioni</p>
+</div>
+<% else %>
+
 <%= render 'eyepieces/new_modal' %>
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -111,3 +117,5 @@
   </table>
   <span><center><%= will_paginate @eyepieces, previous_label: 'Precedente', next_label: 'Successivo' %></center></span>
 </div>
+
+<% end %>

@@ -1,8 +1,16 @@
-<div class="panel panel-default">
+<div class="panel panel-default" id = "observative_sessions">
   <div class="panel-heading">
     <h1 class="panel-title">Lista Sessioni Osservative</h1>
   </div>
-  <div class="panel-body">
+   <div class="panel-body">
+	<p>
+      Azioni disponibili:
+      <span>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#new-body-modal">Inserisci una nuova sessione osservativa</button>
+      </span>
+    </p>
+    <hr>
     <%= search_form_for @q, { id: '' } do |f| %>
       <div class="row">
         <div class="col-sm-4">
@@ -49,3 +57,4 @@
   </table>
   <span><center><%= will_paginate @observative_sessions, previous_label: 'Precedente', next_label: 'Successivo' %></center></span>
 </div>
+<%= render 'outings/index' %>

@@ -21,6 +21,9 @@ Rails.application.routes.draw do
 
   # OBSERVATIVE SESSIONS
   resources :observative_sessions
+  
+  # OUTINGS
+  resources :outings
 
   root to: 'application#index'
 
