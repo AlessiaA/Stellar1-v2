@@ -1,33 +1,38 @@
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-8 col-sm-offset-2">
     <div class="panel panel-default">
-      <div class="panel-heading"><div class="clearfix"><h2 class="h3 pull-left"><%= @observative_session.name %></h2><div class="pull-right"><%= link_to 'Torna alla lista di sessioni osservative', observative_sessions_path %></div></div></div>
+      <div class="panel-heading">Informazioni sessione osservativa</div>
       <div class="panel-body">
-        <h3 class="h4">Informazioni sessione</h3>
-        <p>
-          <strong>Sessione osservativa effettuata da:</strong>
-          <%= link_to @user.name + " " + @user.surname, user_path(@user) %>
-        </p>
-        <p>
-          <strong>Inizio:</strong>
-          <%= @observative_session.start.strftime "%d/%m/%Y %H:%M" %>
-        </p>
-        <p>Seeing astronomico</p>
-        <p>
-          <strong>Scala Antoniadi:</strong>
-          <%= @observative_session.antoniadi %>
-        </p>
-        <p>
-          <strong>Pickering:</strong>
-          <%= @observative_session.pickering %>
-        </p>
-        <p>
-          <strong>Trasparenza cielo:</strong>
-          <%= @observative_session.sky_transparency %>
-        </p>
-        <hr>
-        <h3 class="h4">Osservazioni della sessione</h3>
-        <%= render 'observations_list' %>
+        <p><span><strong>Data:</strong></span> 
+		<% if @observative_session.date != nil %>
+		<%= @observative_session.date.strftime("%d/%m/%Y") %>
+		<% end %>
+		<strong>&emsp;Ora inizio:</strong> 
+		<% if @observative_session.start != nil %>
+		<%= @observative_session.start.strftime("%H:%M") %>
+        <% end %>
+		<strong>&emsp;Ora fine:</strong> 
+		<% if @observative_session.end != nil %>
+		<%= @observative_session.end.strftime("%H:%M") %>
+		<% end %>
+		</p>
+		<p><span><strong>Nome del luogo:</strong></span> <%= @observative_session.name %></p>
+        <p><span><strong>Coordinate:</strong></span><br /> Latitudine:<%= @observative_session.latitude %> &emsp;Longitudine:<%= @observative_session.longitude %> &emsp;Altitudine:<%= @observative_session.altitude %></p>
+        <p><span><strong>Qualità del cielo:</strong></span><br /> Scala di Bortle:<%= @observative_session.bortle %> &emsp;Scala SQM:<%= @observative_session.sqm %></p>
+        <p><span><strong>Seeing astronomico:</strong></span><br /> Scala di Antoniadi:<%= @observative_session.antoniadi %> &emsp;Scala di pickering:<%= @observative_session.pickering %></p>
+		<p><span><strong>Trasparenza del cielo:</strong></span><%= @observative_session.sky_transparency %></p>
+		<p><span><strong>Finalizzata:</strong></span> 
+		<% if @observative_session.completed == true %>
+			Si
+		<% else %>
+			No
+		<% end %>
+		</p>
+		<p><span><strong>Note:</strong></span> <%= @observative_session.notes %></p>
+        <%= link_to 'Modifica', edit_observative_session_url(@observative_session) %> |
+        <%= link_to 'Indietro', root_path %>
       </div>
+    </div>
   </div>
 </div>
+<%= render 'observations/index'%>

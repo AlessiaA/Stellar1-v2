@@ -1,35 +1,39 @@
+<% if Date.today > current_user.subscription_expiration+31.days %>
+<div class="month_expired">
+	<p>La tua sottoscrizione è scaduta da più di un mese non puoi più accedere a queste informazioni</p>
+</div>
+<% else %>
+<%= render 'outings/new_modal'%>
 <div class="panel panel-default" id="outings">
-	<div class="panel-heading">
-    <h1 class="panel-title">Uscite</h1>
+  <div class="panel-heading">
+	<h1 class="panel-title">Uscite</h1>
   </div>
-  <% if current_user.role == 'admin' %>
   <div class="panel-body">
-	<span>
-        <!-- Button trigger modal -->
+	<% if current_user.role == 'admin' %>
+	<p> <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#new-outing-modal">Nuova uscita</button>
-      </span>
+    </p>
+	<% end %>
   </div>
-  <% end %>
   <table class="table">
+
     <tbody>
-	<% if @outings != nil %>
       <% @outings.each do |outing| %>
-         <tr>
-			<td><%= outing.day %><br />
-              <%= outing.location %><br />
-              <%= outing.time %>
-			  <% if current_user.role == 'admin' %>
-			  <hr>
-			  <%= link_to 'Modifica', edit_outing_path(outing) %><%= link_to 'Elimina', outing, method: :delete, data: { confirm: 'Sei sicuro?' } %>
-			  </td>
-			
-		  <% end %>
+		<% if outing.day > Date.today %>
+        <tr>
+          <td><%= outing.day.strftime("%d/%m/%Y") %><br />
+          <%= outing.location %><br />
+          <%= outing.time.strftime('%H:%M') %><br /><br />
+		  <% if current_user.role == 'admin' %>
+          <%= link_to 'Modifica', edit_outing_path(outing) %>
+          <%= link_to 'Elimina', outing, method: :delete, data: { confirm: 'Sei sicuro?' } %>
+		  <% end %>	
+		  </td>
 		</tr>
+		<% end %>
       <% end %>
-	  <% end %>
     </tbody>
   </table>
-  <% if @outings != nil %>
-  <span><center><%= will_paginate @outings, previous_label: 'Precedente', next_label: 'Successivo' %></center></span>
-	<% end %>
+  <span><center><%= will_paginate @outings, previous_label: '<', next_label: '>' %></center></span>
 </div>
+<% end %>

@@ -8,26 +8,17 @@ class OutingsController < ApplicationController
   # le ordina, attua una paginazione delle stesse ed in seguito
   # le visualizza.
   def index
-    @q = Outing.ransack(params[:q])
+	@q = Outing.ransack(params[:q])
     @outings = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
     @outings = Outing.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
+	@outing = Outing.new
   end
 
   # Metodo ereditato dalla classe ApplicationController.
   def show
   end
 
-  # Questo metodo crea un'istanza di Outing, la quale verrà 
-  # passata alla vista corrispondente all'URL "/outings/1/edit".
-  def new
-    @outing = Outing.new
-  end
-
-  # Metodo ereditato dalla classe ApplicationController.
-  def edit
-  end
-
-  # Questo metodo crea un'istanza di Outing e la salva nel database.
+ # Questo metodo crea un'istanza di Outing e la salva nel database.
   # Se l'operazione si conclude con successo, avverrà una redirezione alla pagina
   # che presenta i dettagli dello strumento creato. In caso contrario, verrà
   # visualizzato un messaggio d'errore.
@@ -43,6 +34,16 @@ class OutingsController < ApplicationController
         format.json { render json: @outing.errors, status: :unprocessable_entity }
       end
     end
+  end 
+
+ # Questo metodo crea un'istanza di Outing, la quale verrà 
+  # passata alla vista corrispondente all'URL "/outings/1/edit".
+  def new
+    @outing = Outing.new
+  end
+
+  # Metodo ereditato dalla classe ApplicationController.
+  def edit
   end
 
   # Metodo che aggiorna un'istanza di Outing. Se l'operazione avviene con successo,
@@ -65,7 +66,7 @@ class OutingsController < ApplicationController
   def destroy
     @outing.destroy
     respond_to do |format|
-      format.html { redirect_to outing_url, notice: 'Outing was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Outing was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

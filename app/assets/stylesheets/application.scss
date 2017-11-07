@@ -75,3 +75,15 @@
 	color:#FFFFFF;
 	margin-bottom:0.6em;
 }
+
+thead {
+	background:#83c9ff;
+}
+
+tr:nth-child(even) {
+	background:#d9d9d9;
+}
+
+.clear {
+	clear:both;
+}

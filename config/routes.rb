@@ -15,13 +15,12 @@ Rails.application.routes.draw do
   resources :eyepieces
   # BINOCULARS
   resources :binoculars
-
   # CELESTIAL BODIES
   resources :celestial_bodies
-
   # OBSERVATIVE SESSIONS
   resources :observative_sessions
-  
+  # OBSERVATIONS
+  resources :observations
   # OUTINGS
   resources :outings
 

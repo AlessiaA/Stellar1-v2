@@ -11,19 +11,14 @@ class ObservativeSessionsController < ApplicationController
   def index
     @q = ObservativeSession.ransack(params[:q])
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
-    @observative_sessions = ObservativeSession.order(params[:orser]).paginate(page: params[:page]) unless params[:q].present?
-  end
+    @observative_sessions = ObservativeSession.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
+	@observative_session = ObservativeSession.new
+ end
 
   # Metodo ereditato dalla classe ApplicationController.
   def show
     @observations = @observative_session.observations
     @user = @observative_session.user
-  end
-
-  # Metodo che crea un'istanza di ObservativeSession, la quale verrà 
-  # passata alla vista corrispondente all'URL "/observative_sessions/1/edit".
-  def new
-    @observative_session = ObservativeSession.new
   end
 
   # Metodo ereditato dalla classe ApplicationController.
@@ -35,13 +30,15 @@ class ObservativeSessionsController < ApplicationController
   # che presenta i dettagli della sessione osservativa. In caso contrario, verrà
   # visualizzato un messaggio d'errore.
   def create
-    @observative_session = ObservativeSession.new(observative_session_params)
-
+    @observative_session = current_user.observative_sessions.build(observative_session_params)
+   
     respond_to do |format|
       if @observative_session.save
         format.html { redirect_to @observative_session, notice: 'Observative session was successfully created.' }
         format.json { render :show, status: :created, location: @observative_session }
-      else
+      else 
+	  puts current_user.id
+	  Rails.logger.info(@observative_session.errors.inspect) 
         format.html { render :new }
         format.json { render json: @observative_session.errors, status: :unprocessable_entity }
       end
@@ -62,13 +59,19 @@ class ObservativeSessionsController < ApplicationController
       end
     end
   end
+  
+  # Metodo che crea un'istanza di ObservativeSession, la quale verrà 
+  # passata alla vista corrispondente all'URL "/observative_sessions/1/edit".
+  def new
+    @observative_session = ObservativeSession.new
+  end
 
   # Metodo che elimina un'istanza di ObservativeSession. Se l'operazione avviene con
   # successo, il browser verrà redirezionato alla lista delle sessioni osservative.
   def destroy
     @observative_session.destroy
     respond_to do |format|
-      format.html { redirect_to observative_sessions_url, notice: 'Observative session was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Observative session was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -81,6 +84,6 @@ class ObservativeSessionsController < ApplicationController
     # Metodo che imposta i parametri richiesti e ammessi durante la creazione o la modifica
     # di un'istanza di ObservativeSession.
     def observative_session_params
-      params.require(:observative_session).permit(:name, :category, :start, :end, :antoniadi, :pickering, :sky_transparency)
+      params.require(:observative_session).permit(:date, :start, :end, :name, :latitude, :longitude, :altitude, :bortle, :sqm, :completed, :antoniadi, :pickering, :sky_transparency, :notes)
     end
 end

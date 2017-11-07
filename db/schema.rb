@@ -27,9 +27,13 @@ ActiveRecord::Schema.define(version: 20170917135936) do
     t.index ["name"], name: "index_binoculars_on_name"
   end
 
-  create_table "celestial_bodies", force: :cascade do |t|
+  create_table "celestial_bodies", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "typology"
+    t.datetime "ascension"
+    t.integer "declination"
+    t.decimal "magnitudo"
+    t.integer "separation"
     t.float "size"
     t.string "constellation"
     t.integer "map_chart_number"
@@ -64,34 +68,53 @@ ActiveRecord::Schema.define(version: 20170917135936) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "observations", force: :cascade do |t|
+  create_table "observations", id: :serial, force: :cascade do |t|
     t.datetime "start_time"
-    t.string "description"
-    t.boolean "completed"
+    t.string "typology"
+    t.bigint "tool_id"
     t.integer "rating"
+    t.string "description"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "celestial_body_id"
     t.bigint "observative_session_id"
+    t.bigint "eyepiece_id"
+    t.bigint "filter_id"
     t.index ["celestial_body_id"], name: "index_observations_on_celestial_body_id"
+    t.index ["eyepiece_id"], name: "index_observations_on_eyepiece_id"
+    t.index ["filter_id"], name: "index_observations_on_filter_id"
     t.index ["observative_session_id"], name: "index_observations_on_observative_session_id"
     t.index ["user_id"], name: "index_observations_on_user_id"
   end
 
-  create_table "observative_sessions", force: :cascade do |t|
+  create_table "observative_sessions", id: :serial, force: :cascade do |t|
+    t.date "date"
     t.string "name"
-    t.integer "category"
-    t.datetime "start"
-    t.datetime "end"
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
+    t.integer "altitude"
+    t.integer "bortle"
+    t.decimal "sqm"
     t.integer "antoniadi"
     t.integer "pickering"
     t.integer "sky_transparency"
+    t.datetime "start"
+    t.datetime "end"
+    t.string "notes"
+    t.boolean "completed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.index ["user_id"], name: "index_observative_sessions_on_user_id"
+  end
+
+  create_table "outings", id: :serial, force: :cascade do |t|
+    t.date "day"
+    t.string "location"
+    t.datetime "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "telescopes", id: :serial, force: :cascade do |t|
@@ -132,16 +155,10 @@ ActiveRecord::Schema.define(version: 20170917135936) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-  
-  create_table "outings", force: :cascade do |t|
-    t.date "day"
-    t.string "location"
-    t.datetime "time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   add_foreign_key "observations", "celestial_bodies"
+  add_foreign_key "observations", "eyepieces"
+  add_foreign_key "observations", "filters"
   add_foreign_key "observations", "observative_sessions"
   add_foreign_key "observations", "users"
   add_foreign_key "observative_sessions", "users"

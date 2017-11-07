@@ -17,4 +17,8 @@
 class Filter < ApplicationRecord
   # verifica la correttezza dei dati inseriti per i campi specificati.
   validates :name, :description, :brand, presence: true
+  
+  # relazioni
+  has_many :observations, dependent: :destroy
+  
 end

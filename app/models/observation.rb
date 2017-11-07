@@ -4,9 +4,13 @@
 #
 #  id                     :integer          not null, primary key
 #  start_time             :datetime
-#  description            :string
-#  completed              :boolean
+#  tool_tipology          :string
+#  tool_id                :integer
+#  eyepiece_id            :integer
+#  filter_id			  :integer
 #  rating                 :integer
+#  description            :string
+#  image                  :integer
 #  notes                  :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -24,5 +28,9 @@ class Observation < ApplicationRecord
   belongs_to :observative_session
   belongs_to :user
   belongs_to :celestial_body
+  belongs_to :telescope
+  belongs_to :binocular
+  belongs_to :eyepiece
+  belongs_to :filter
 
 end

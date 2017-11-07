@@ -1,3 +1,4 @@
+<%= render 'observative_sessions/new_modal' %>
 <div class="panel panel-default" id = "observative_sessions">
   <div class="panel-heading">
     <h1 class="panel-title">Lista Sessioni Osservative</h1>
@@ -7,22 +8,28 @@
       Azioni disponibili:
       <span>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#new-body-modal">Inserisci una nuova sessione osservativa</button>
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#new-session-modal">Inserisci una nuova sessione osservativa</button>
       </span>
     </p>
     <hr>
     <%= search_form_for @q, { id: '' } do |f| %>
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="form-group">
-            <%= f.label 'Cerca per nome' %>
+            <%= f.label :date_cont, 'Cerca per data' %>
+            <%= f.search_field :date_cont, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <%= f.label :name_cont, 'Cerca per luogo' %>
             <%= f.search_field :name_cont, class: 'form-control' %>
           </div>
         </div>
-        <div class="col-sm-2 col-sm-offset-6">
+        <div class="col-sm-2 col-sm-offset-4">
           <div class="form-group">
             <label for="order">Ordina risultati per</label>
-            <%= select_tag 'order', options_for_select([['Nessuno',''], ['Nome', 'name'], ['Categoria','category'], ['Inizio', 'start'], ['Fine', 'end'], ['Antoniadi', 'antoniadi'], ['Pickering', 'pickering']], params[:order] || ''), class: 'form-control', onchange: "$('#observative_session_search').submit();" %>
+            <%= select_tag 'order', options_for_select([['Nessuno',''], ['Data', 'date'], ['Luogo', 'name'], ['Bortle', 'bortle'], ['SQM', 'sqm']], params[:order] || ''), class: 'form-control', onchange: "$('#observative_session_search').submit();" %>
           </div>
         </div>
       </div>
@@ -31,11 +38,10 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Nome</th>
-        <th>Inizio</th>
-        <th>Scala Antoniadi</th>
-        <th>Scala Pickering</th>
-        <th>Trasparenza del cielo</th>
+		<th>Data</th>
+        <th>Luogo</th>
+        <th>Scala Bortle</th>
+		<th>Scala SQM</th>
         <th colspan="3">Azioni</th>
       </tr>
     </thead>
@@ -43,18 +49,21 @@
     <tbody>
       <% @observative_sessions.each do |observative_session| %>
         <tr>
-          <td><%= observative_session.name %></td>
-          <td><%= observative_session.start.strftime "%d/%m/%Y" %></td>
-          <td><%= observative_session.antoniadi %></td>
-          <td><%= observative_session.pickering %></td>
-          <td><%= observative_session.sky_transparency %></td>
+		<% if observative_session.date != nil %>
+		  <td><%= observative_session.date.strftime("%d/%m/%Y") %></td>
+		<% end %>
+		  <td><%= observative_session.name %></td>
+          <td><%= observative_session.bortle %></td>
+		  <td><%= observative_session.sqm %></td>
           <td><%= link_to 'Visualizza', observative_session %></td>
-          <td><%= link_to 'Modifica', edit_observative_session_path(observative_session) %></td>
-          <td><%= link_to 'Elimina', observative_session, method: :delete, data: { confirm: 'Sei sicuro?' } %></td>
-        </tr>
+		  <% if current_user == 'admin' || Date.today < current_user.subscription_expiration+31.days %>
+			<td><%= link_to 'Modifica', edit_observative_session_path(observative_session) %></td>
+            <td><%= link_to 'Elimina', observative_session, method: :delete, data: { confirm: 'Sei sicuro?' } %></td>
+		  <% end %>
+		</tr>
       <% end %>
     </tbody>
   </table>
   <span><center><%= will_paginate @observative_sessions, previous_label: 'Precedente', next_label: 'Successivo' %></center></span>
 </div>
-<%= render 'outings/index' %>
+<%= render 'outings/index'%>

@@ -3,23 +3,30 @@
 # Table name: observative_sessions
 #
 #  id               :integer          not null, primary key
+#  datetime			:datetime
 #  name             :string
-#  category         :integer
-#  start            :datetime
-#  end              :datetime
+#  latitude         :decimal
+#  longitude        :decimal
+#  altitude         :integer
+#  bortle           :integer
+#  sqm              :integer
+#  completed        :boolean
 #  antoniadi        :integer
 #  pickering        :integer
 #  sky_transparency :integer
+#  user_id          :integer
+#  start            :time
+#  end              :time
+#  notes            :text
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  user_id          :integer
 #
 
 #
 # Classe modello per la tabella "observative_sessions".
 #
 class ObservativeSession < ApplicationRecord
-
+  
   # relazioni
   belongs_to :user
   has_many :observations, dependent: :destroy

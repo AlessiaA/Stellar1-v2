@@ -26,8 +26,13 @@ class ApplicationController < ActionController::Base
     # Esegue la ricerca degli utenti.
     @q = ObservativeSession.ransack(params[:q])
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
-    @observative_sessions = ObservativeSession.order(params[:orser]).paginate(page: params[:page]) unless params[:q].present?
+    @observative_sessions = ObservativeSession.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
     @observative_session = ObservativeSession.new
+	
+	@r = Outing.ransack(params[:q])
+	@outings = @r.result.ransack(params[:q]).paginate(page: params[:page]) if params[:q].present?
+    @outings = Outing.order('day DESC').paginate(page: params[:page]) unless params[:q].present?
+	@outing = Outing.new
 	# visualizza la lista degli utenti iscritti.
     render 'observative_sessions/index'
   end
@@ -38,7 +43,11 @@ class ApplicationController < ActionController::Base
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
     @observative_sessions = ObservativeSession.order(params[:orser]).paginate(page: params[:page]) unless params[:q].present?
     @observative_session = ObservativeSession.new
-    # visualizza la pagina iniziale degli utenti ordinari.
+    
+	@r=Outing.ransack(params[:r])
+	@outings = @r.result.order(params[:order]).paginate(page: params[:page]) if params[:r].present?
+    @outings = Outing(params[:order]).paginate(page: params[:page]) unless params[:r].present?
+	# visualizza la pagina iniziale degli utenti ordinari.
 	render 'observative_sessions/index'
   end
 

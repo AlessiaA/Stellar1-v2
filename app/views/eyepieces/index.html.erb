@@ -1,4 +1,4 @@
-<% if Date.today > current_user.subscription_expiration+31.days %>
+<% if current_user != 'admin' && Date.today > current_user.subscription_expiration+31.days %>
 <div class="month_expired">
 	<p>La tua sottoscrizione è scaduta da più di un mese non puoi più accedere a queste informazioni</p>
 </div>
@@ -85,12 +85,10 @@
       <tr>
         <th>Nome</th>
         <th>Brand</th>
-        <th>Descrizione</th>
         <th>Lunghezza focale</th>
         <th>Oculare</th>
         <th>Campo di visione apparente</th>
         <th>Dimensione</th>
-        <th>Note</th>
         <th colspan="3">Azioni</th>
       </tr>
     </thead>
@@ -100,12 +98,10 @@
         <tr>
           <td><%= eyepiece.name %></td>
           <td><%= eyepiece.brand %></td>
-          <td><%= eyepiece.description %></td>
           <td><%= number_with_delimiter eyepiece.focal_length, separator: ',' %></td>
           <td><%= number_with_delimiter eyepiece.ocular, separator: ',' %></td>
           <td><%= number_with_delimiter eyepiece.apparent_fov, separator: ',' %></td>
           <td><%= number_with_delimiter eyepiece.size, separator: ',' %></td>
-          <td><%= eyepiece.notes %></td>
           <td><%= link_to 'Mostra', eyepiece %></td>
 		  <% if current_user.role == 'admin' %>
           <td><%= link_to 'Modifica', edit_eyepiece_path(eyepiece) %></td>

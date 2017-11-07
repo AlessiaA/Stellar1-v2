@@ -3,9 +3,9 @@
 # Table name: outings
 #
 #  id                 :integer          not null, primary key
-#  day				  :date
-#  location			  :text
-#  time				  :time
+#  day				  :date				
+#  location  		  :string				
+#  time				  :time				
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
@@ -16,4 +16,5 @@
 class Outing < ApplicationRecord
   # verifica la correttezza dei dati inseriti per i campi specificati.
   validates :day, :location, :time, presence: true
+  
 end

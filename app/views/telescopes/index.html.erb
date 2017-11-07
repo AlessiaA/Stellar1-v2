@@ -1,4 +1,4 @@
-<% if Date.today > current_user.subscription_expiration+31.days %>
+<% if current_user != 'admin' && Date.today > current_user.subscription_expiration+31.days %>
 <div class="month_expired">
 	<p>La tua sottoscrizione è scaduta da più di un mese non puoi più accedere a queste informazioni</p>
 </div>
@@ -86,7 +86,6 @@
         <th>Nome</th>
         <th>Brand</th>
         <th>Tipologia</th>
-        <th>Descrizione</th>
         <th>Risoluzione angolare</th>
         <th>Magnitudine</th>
         <th>Rapporto focale</th>
@@ -103,7 +102,6 @@
           <td><%= telescope.name %></td>
           <td><%= telescope.brand %></td>
           <td><%= telescope.typology %></td>
-          <td><%= telescope.description %></td>
           <td><%= number_with_delimiter telescope.angular_resolution, separator: ',' %></td>
           <td><%= number_with_delimiter telescope.magnitude, separator: ',' %></td>
           <td><%= number_with_delimiter telescope.focal_ratio, separator: ','%></td>

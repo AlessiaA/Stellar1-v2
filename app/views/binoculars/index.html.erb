@@ -1,4 +1,4 @@
-<% if Date.today > current_user.subscription_expiration+31.days %>
+<% if current_user != 'admin' && Date.today > current_user.subscription_expiration+31.days %>
 <div class="month_expired">
 	<p>La tua sottoscrizione è scaduta da più di un mese non puoi più accedere a queste informazioni</p>
 </div>

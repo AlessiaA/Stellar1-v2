@@ -30,6 +30,8 @@ class Telescope < ApplicationRecord
 
   before_save :trim_data
 
+  # relazioni
+  has_many :observations, dependent: :destroy
 
   private
 

@@ -80,6 +80,6 @@ class CelestialBodiesController < ApplicationController
     # Metodo che imposta i parametri richiesti e ammessi durante la creazione o la modifica
     # di un'istanza di CelestialBody.
     def celestial_body_params
-      params.require(:celestial_body).permit(:name, :typology, :size, :constellation, :map_chart_number)
+      params.require(:celestial_body).permit(:name, :typology, :ascension, :declination, :magnitudo, :separation, :size, :constellation, :map_chart_number)
     end
 end
