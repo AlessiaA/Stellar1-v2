@@ -55,7 +55,7 @@
         <tr>
           <td><%= celestial_body.name %></td>
           <td><%= celestial_body.typology %></td>
-          <td><%= celestial_body.ascension %></td>
+          <td><%= celestial_body.ascension.strftime("%H° %M\' %S\"") %></td>
 		  <td><%= celestial_body.declination %></td>
           <td><%= celestial_body.constellation %></td>
           <td><%= celestial_body.map_chart_number %></td>

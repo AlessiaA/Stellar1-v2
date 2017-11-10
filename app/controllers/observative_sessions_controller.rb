@@ -9,16 +9,18 @@ class ObservativeSessionsController < ApplicationController
   # le ordina, attua una paginazione delle stesse ed in seguito
   # le visualizza.
   def index
-    @q = ObservativeSession.ransack(params[:q])
+    @q = ObservativeSession.ransack(:user)
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
-    @observative_sessions = ObservativeSession.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
+    @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
 	@observative_session = ObservativeSession.new
  end
 
   # Metodo ereditato dalla classe ApplicationController.
   def show
-    @observations = @observative_session.observations
-    @user = @observative_session.user
+    @r = Observation.ransack(:observative_session)
+    @observations = @r.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
+    @observations = @r.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
+	@observation = Observation.new
   end
 
   # Metodo ereditato dalla classe ApplicationController.

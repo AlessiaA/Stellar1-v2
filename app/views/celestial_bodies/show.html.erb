@@ -7,11 +7,11 @@
       <div class="panel-body">
         <p><span><strong>Nome:</strong></span> <%= @celestial_body.name %></p>
         <p><span><strong>Tipologia:</strong></span> <%= @celestial_body.typology %></p>
-		<p><span><strong>Ascensione retta:</strong></span> <%= @celestial_body.ascension %></p>
-		<p><span><strong>Declinazione:</strong></span> <%= @celestial_body.declination %></p>
+		<p><span><strong>Ascensione retta:</strong></span> <%= @celestial_body.ascension.strftime("%H° %M\' %S\"") %></p>
+		<p><span><strong>Declinazione:</strong></span> <%= @celestial_body.declination %>°</p>
 		<p><span><strong>Magnitudine:</strong></span> <%= @celestial_body.magnitudo %></p>
-        <p><span><strong>Grandezza:</strong></span> <%= @celestial_body.size %></p>
-		<p><span><strong>Separazione:</strong></span> <%= @celestial_body.separation %></p>
+        <p><span><strong>Grandezza:</strong></span> <%= @celestial_body.size %> Km</p>
+		<p><span><strong>Separazione:</strong></span> <%= @celestial_body.separation %> secondi di arco</p>
         <p><span><strong>Costellazione:</strong></span> <%= @celestial_body.constellation %></p>
         <p><span><strong>Numero mappa:</strong></span> <%= @celestial_body.map_chart_number %></p>
 		<% if current_user.role == 'admin' %>

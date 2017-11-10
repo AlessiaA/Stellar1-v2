@@ -12,7 +12,7 @@
 #  focal_ratio        :float
 #  finderscope        :integer
 #  focal_length       :integer
-#  mount              :integer
+#  mount              :string
 #  aperture           :integer
 #  typology           :string
 #  created_at         :datetime         not null

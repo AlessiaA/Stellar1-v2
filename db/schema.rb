@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917135936) do
+ActiveRecord::Schema.define(version: 20171108110443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,15 +30,15 @@ ActiveRecord::Schema.define(version: 20170917135936) do
   create_table "celestial_bodies", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "typology"
-    t.datetime "ascension"
-    t.integer "declination"
-    t.decimal "magnitudo"
-    t.integer "separation"
     t.float "size"
     t.string "constellation"
     t.integer "map_chart_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "ascension"
+    t.integer "declination"
+    t.decimal "magnitudo"
+    t.integer "separation"
   end
 
   create_table "eyepieces", id: :serial, force: :cascade do |t|
@@ -70,47 +70,50 @@ ActiveRecord::Schema.define(version: 20170917135936) do
 
   create_table "observations", id: :serial, force: :cascade do |t|
     t.datetime "start_time"
-    t.string "typology"
-    t.bigint "tool_id"
-    t.integer "rating"
     t.string "description"
+    t.integer "rating"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "celestial_body_id"
     t.bigint "observative_session_id"
-    t.bigint "eyepiece_id"
+    t.bigint "telescope_id"
+    t.bigint "binocular_id"
     t.bigint "filter_id"
+    t.bigint "eyepiece_id"
+    t.index ["binocular_id"], name: "index_observations_on_binocular_id"
     t.index ["celestial_body_id"], name: "index_observations_on_celestial_body_id"
     t.index ["eyepiece_id"], name: "index_observations_on_eyepiece_id"
     t.index ["filter_id"], name: "index_observations_on_filter_id"
     t.index ["observative_session_id"], name: "index_observations_on_observative_session_id"
+    t.index ["telescope_id"], name: "index_observations_on_telescope_id"
     t.index ["user_id"], name: "index_observations_on_user_id"
   end
 
   create_table "observative_sessions", id: :serial, force: :cascade do |t|
-    t.date "date"
     t.string "name"
-    t.decimal "latitude", precision: 10, scale: 6
-    t.decimal "longitude", precision: 10, scale: 6
-    t.integer "altitude"
-    t.integer "bortle"
-    t.decimal "sqm"
+    t.datetime "start"
+    t.datetime "end"
     t.integer "antoniadi"
     t.integer "pickering"
     t.integer "sky_transparency"
-    t.datetime "start"
-    t.datetime "end"
-    t.string "notes"
-    t.boolean "completed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.datetime "date"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.integer "altitude"
+    t.integer "bortle"
+    t.decimal "sqm"
+    t.boolean "completed"
+    t.string "notes"
+    t.index ["user_id"], name: "index_observative_sessions_on_user_id"
   end
 
   create_table "outings", id: :serial, force: :cascade do |t|
-    t.date "day"
+    t.datetime "day"
     t.string "location"
     t.datetime "time"
     t.datetime "created_at", null: false
@@ -156,10 +159,12 @@ ActiveRecord::Schema.define(version: 20170917135936) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "observations", "binoculars"
   add_foreign_key "observations", "celestial_bodies"
   add_foreign_key "observations", "eyepieces"
   add_foreign_key "observations", "filters"
   add_foreign_key "observations", "observative_sessions"
+  add_foreign_key "observations", "telescopes"
   add_foreign_key "observations", "users"
   add_foreign_key "observative_sessions", "users"
 end

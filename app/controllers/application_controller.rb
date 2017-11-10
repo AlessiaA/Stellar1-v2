@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
   # Metodo che visualizza la pagina iniziale degli utenti amministratori.
   def admin_index
     # Esegue la ricerca degli utenti.
-    @q = ObservativeSession.ransack(params[:q])
+    @q = ObservativeSession.ransack(user_id_eq: current_user.id)
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
-    @observative_sessions = ObservativeSession.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
+    @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
     @observative_session = ObservativeSession.new
 	
 	@r = Outing.ransack(params[:q])
@@ -39,14 +39,15 @@ class ApplicationController < ActionController::Base
 
   # Metodo che visualizza la pagina iniziale degli utenti ordinari.
   def user_index
-	@q = ObservativeSession.ransack(params[:q])
+	@q = ObservativeSession.ransack(user_id_eq: current_user.id)
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
-    @observative_sessions = ObservativeSession.order(params[:orser]).paginate(page: params[:page]) unless params[:q].present?
-    @observative_session = ObservativeSession.new
+    @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
+	@observative_session = ObservativeSession.new
     
-	@r=Outing.ransack(params[:r])
-	@outings = @r.result.order(params[:order]).paginate(page: params[:page]) if params[:r].present?
-    @outings = Outing(params[:order]).paginate(page: params[:page]) unless params[:r].present?
+	@r = Outing.ransack(params[:q])
+	@outings = @r.result.ransack(params[:q]).paginate(page: params[:page]) if params[:q].present?
+    @outings = Outing.order('day DESC').paginate(page: params[:page]) unless params[:q].present?
+	@outing = Outing.new
 	# visualizza la pagina iniziale degli utenti ordinari.
 	render 'observative_sessions/index'
   end

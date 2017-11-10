@@ -86,6 +86,7 @@
         <th>Nome</th>
         <th>Brand</th>
         <th>Tipologia</th>
+		<th>Montatura</th>
         <th>Risoluzione angolare</th>
         <th>Magnitudine</th>
         <th>Rapporto focale</th>
@@ -102,6 +103,7 @@
           <td><%= telescope.name %></td>
           <td><%= telescope.brand %></td>
           <td><%= telescope.typology %></td>
+		  <td><%= telescope.mount %></td>
           <td><%= number_with_delimiter telescope.angular_resolution, separator: ',' %></td>
           <td><%= number_with_delimiter telescope.magnitude, separator: ',' %></td>
           <td><%= number_with_delimiter telescope.focal_ratio, separator: ','%></td>

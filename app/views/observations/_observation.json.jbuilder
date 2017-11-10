@@ -1,0 +1,2 @@
+json.extract! observation, :id, :user_id, :observative_session_id, :start_time, :typology, :tool_id, :eyepiece_id, :filter_id, :celestial_body_id, :rating, :description, :notes, :created_at, :updated_at
+json.url observative_session_url(observative_session, format: :json)

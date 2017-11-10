@@ -1,7 +1,7 @@
 <%= render 'observative_sessions/new_modal' %>
 <div class="panel panel-default" id = "observative_sessions">
   <div class="panel-heading">
-    <h1 class="panel-title">Lista Sessioni Osservative</h1>
+    <h1 class="panel-title">Lista Sessioni Osservative</h1> 
   </div>
    <div class="panel-body">
 	<p>
@@ -58,7 +58,7 @@
           <td><%= link_to 'Visualizza', observative_session %></td>
 		  <% if current_user == 'admin' || Date.today < current_user.subscription_expiration+31.days %>
 			<td><%= link_to 'Modifica', edit_observative_session_path(observative_session) %></td>
-            <td><%= link_to 'Elimina', observative_session, method: :delete, data: { confirm: 'Sei sicuro?' } %></td>
+            <td><%= link_to 'Elimina', observative_session, method: :delete, data: { confirm: 'Eliminando questa sessione eliminerai anche tutte le osservazioni contenute. Sei sicuro?' } %></td>
 		  <% end %>
 		</tr>
       <% end %>

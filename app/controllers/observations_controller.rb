@@ -2,23 +2,21 @@
 # Classe controller che implementa le funzionalità CRUD per la 
 # classe model "ObservativeSession".
 #
-class ObservationController < ApplicationController
+class ObservationsController < ApplicationController
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
 
   # Metodo che recupera le sessioni osservative (eventualmente mediante ricerca), 
   # le ordina, attua una paginazione delle stesse ed in seguito
   # le visualizza.
   def index
-    @q = Observation.ransack(params[:q])
-    @observations = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
+    @r = Observation.ransack(:observative_session)
+    @observations = @r.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
     @observations = Observation.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
 	@observation = Observation.new
  end
 
   # Metodo ereditato dalla classe ApplicationController.
   def show
-    @observations = @observative_session.observations
-    @user = @observative_session.user
   end
 
   # Metodo ereditato dalla classe ApplicationController.
@@ -30,7 +28,7 @@ class ObservationController < ApplicationController
   # che presenta i dettagli della sessione osservativa. In caso contrario, verrà
   # visualizzato un messaggio d'errore.
   def create
-    @observation = current_user.observations.build(observation_params)
+    @observation = @observative_session.observations.build(observation_params)
    
     respond_to do |format|
       if @observation.save
@@ -84,6 +82,6 @@ class ObservationController < ApplicationController
     # Metodo che imposta i parametri richiesti e ammessi durante la creazione o la modifica
     # di un'istanza di ObservativeSession.
     def observation_params
-      params.require(:observation).permit(:start_time, :typology, :rating, :description, :notes)
+      params.require(:observation).permit(:start_time, :celestial_body_name, :binocular_id, :telescope_id, :eyepiece_id, :filter_id, :rating, :description, :notes)
     end
 end

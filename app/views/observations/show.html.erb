@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">Informazioni osservazione</div>
+      <div class="panel-body">
+	    <p><strong>Osservatore:</strong><br /><%= @observative_session.user.name %></p>
+        <p><span><strong>Ora inizio:</strong></span> 
+		<% if @observation.start_time != nil %>
+		<%= @observation.start_time.strftime("%d/%m/%Y") %>
+		<% end %>
+		</p>
+		<p><span><strong>Corpo celeste:</strong></span> <%= @observation.celestial_body.name %></p>
+        <p><span><strong>Binocolo:</strong></span> <%= @observation.binocular.name %></p>
+		<p><span><strong>Telescopio:</strong></span> <%= @observation.telescope.name %></p>
+        <p><span><strong>Oculare:</strong></span> <%= @observati.eyepiece.name %></p>
+        <p><span><strong>Filtro:</strong></span> <%= @observation.filter.name %></p>
+		<p><span><strong>Rating:</strong></span><%= @observation.rating %></p>
+		<p><span><strong>Descrizione:</strong></span><%= @observation.description %></p> 
+		<p><span><strong>Note:</strong></span> <%= @observation.notes %></p>
+		<% if current_user == 'admin' || Date.today < current_user.subscription_expiration+31.days %>
+        <%= link_to 'Modifica', edit_observative_session_url(@observative_session) %> |
+        <% end %>
+		<%= link_to 'Indietro', observative_session_path %>
+      </div>
+    </div>
+  </div>
+</div>

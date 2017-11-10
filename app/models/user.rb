@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
   # relazioni
   has_many :observative_sessions, dependent: :destroy
-  has_many :observations, dependent: :destroy
+  has_many :observations, through: :observative_sessions, dependent: :destroy
 
   # Include i moduli di default usati dalla libreria "Devise", che offre
   # funzionalità di autenticazione agli utenti.

@@ -1,3 +1,4 @@
+<%= render 'observations/new_modal' %>
 <div class="panel panel-default">
   <div class="panel-heading">
 	<h1 class="panel-title">Gestione Osservazioni</h1>
@@ -8,22 +9,50 @@
       Azioni disponibili:
       <span>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#new-filter-modal">Inserisci nuova osservazione</button>
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#new-observation-modal">Inserisci nuova osservazione</button>
       </span>
     </p>
     <hr>
+	<%= search_form_for @r, { id: '' } do |f| %>
+      <div class="row">
+        <div class="col-sm-2 col-sm-offset-4">
+          <div class="form-group">
+            <label for="order">Ordina risultati per</label>
+            <%= select_tag 'order', options_for_select([['Nessuno',''], ['Ora', 'start_time'], ['Rating', 'rating']], params[:order] || ''), class: 'form-control', onchange: "$('#observation_search').submit();" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
   <table class="table">
     <thead>
       <tr>
-        <th>Ora</th>
+		<th>Ora inizio</th>
         <th>Corpo celeste</th>
+        <th>Telescopio</th>
+		<th>Binocolo</th>
+		<th>Osservatore</th>
         <th colspan="3">Azioni</th>
       </tr>
     </thead>
 
     <tbody>
-      
+      <% @observations.each do |observation| %>
+        <tr>
+		<% if observation.start_time != nil %>
+		  <td><%= observation.start_time.strftime("%H:%M") %></td>
+		<% end %>
+		  <td><%= observation.celestial_body_id.name %></td>
+          <td><%= observation.telescope_id.name %></td>
+		  <td><%= observation.binocular_id.name %></td>
+		  <td><%= observation.user_id.name %></td>
+          <td><%= link_to 'Visualizza', observation %></td>
+		  <% if current_user == 'admin' || Date.today < current_user.subscription_expiration+31.days %>
+			<td><%= link_to 'Modifica', edit_observation_path(observation) %></td>
+            <td><%= link_to 'Elimina', observation, method: :delete, data: { confirm: 'Sei sicuro?' } %></td>
+		  <% end %>
+		</tr>
+      <% end %>
     </tbody>
   </table>
 </div>

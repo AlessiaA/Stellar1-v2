@@ -8,9 +8,9 @@ class OutingsController < ApplicationController
   # le ordina, attua una paginazione delle stesse ed in seguito
   # le visualizza.
   def index
-	@q = Outing.ransack(params[:q])
-    @outings = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
-    @outings = Outing.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
+	@r = Outing.ransack(params[:q])
+	@outings = @r.result.ransack(params[:q]).paginate(page: params[:page]) if params[:q].present?
+    @outings = Outing.order('day DESC').paginate(page: params[:page]) unless params[:q].present?
 	@outing = Outing.new
   end
 
