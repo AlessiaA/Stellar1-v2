@@ -1,7 +1,4 @@
-<%= bootstrap_form_for @observation do |f| %>
-	Sessione:<%= @observative_session.id %>
-	Osservatore:<%= @observative_session.user_id %>
-	<% CelestialBody.where('Mars') %>
+<%= bootstrap_form_for ([@observative_session, @observation]) do |f| %>
   <div class="col-sm-3 clear">
   <%= f.time_field :start_time, label: 'Ora di inizio' %>
    </div>
@@ -9,16 +6,16 @@
   <%= f.text_field :celestial_body_name, label: 'Corpo celeste' %> 
   </div>
   <div class="col-sm-6">
-  <%= f.text_field :binocular_id, label: 'Nome binocolo:' %>
+  <%= f.text_field :binocular_name, label: 'Nome binocolo:' %>
   </div>
   <div class="col-sm-6">
-  <%= f.text_field :telescope_id, label: 'Nome telescopio:' %>
+  <%= f.text_field :telescope_name, label: 'Nome telescopio:' %>
   </div>
   <div class="col-sm-6">
-  <%= f.text_field :eyepiece_id, label: 'Oculare:' %>
+  <%= f.text_field :eyepiece_name, label: 'Oculare:' %>
   </div>
   <div class="col-sm-6">
-  <%= f.text_field :filter_id, label: 'Filtro:' %>
+  <%= f.text_field :filter_name, label: 'Filtro:' %>
   </div>
   <div class="col-sm-2">
   <%= f.number_field :rating, label: 'Rating', in: 0...11 %>

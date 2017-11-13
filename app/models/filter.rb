@@ -19,6 +19,6 @@ class Filter < ApplicationRecord
   validates :name, :description, :brand, presence: true
   
   # relazioni
-  has_many :observations, dependent: :destroy
+  #has_many :observations, dependent: :destroy
   
 end

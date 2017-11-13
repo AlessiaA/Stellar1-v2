@@ -24,6 +24,6 @@ class CelestialBody < ApplicationRecord
   validates :name, :typology, :ascension, :declination, :magnitudo, :size, :constellation, :map_chart_number, presence: true
   
   # relazioni
-  has_many :observations, dependent: :destroy
+  #has_many :observations, dependent: :destroy
 
 end

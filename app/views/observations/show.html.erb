@@ -18,10 +18,11 @@
 		<p><span><strong>Descrizione:</strong></span><%= @observation.description %></p> 
 		<p><span><strong>Note:</strong></span> <%= @observation.notes %></p>
 		<% if current_user == 'admin' || Date.today < current_user.subscription_expiration+31.days %>
-        <%= link_to 'Modifica', edit_observative_session_url(@observative_session) %> |
+        <%= link_to 'Modifica', edit_observative_session_observation_url(@observative_session) %> |
         <% end %>
 		<%= link_to 'Indietro', observative_session_path %>
       </div>
     </div>
   </div>
 </div>
+<%= render 'layouts/footer_logged'%>

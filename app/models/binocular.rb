@@ -20,5 +20,5 @@ class Binocular < ApplicationRecord
   validates :name, :brand, :magnifications, presence: true
   
   # relazioni
-  has_many :observations, dependent: :destroy
+  #has_many :observations, dependent: :destroy
 end

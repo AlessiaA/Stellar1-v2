@@ -13,14 +13,19 @@ class ObservativeSessionsController < ApplicationController
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
 	@observative_session = ObservativeSession.new
+	
+	@r = Outing.ransack(params[:r])
+	@outings = @r.result.ransack(params[:r]).paginate(page: params[:page]) if params[:r].present?
+    @outings = Outing.order('day DESC').paginate(page: params[:page]) unless params[:r].present?
+	@outing = Outing.new
  end
 
   # Metodo ereditato dalla classe ApplicationController.
   def show
-    @r = Observation.ransack(:observative_session)
-    @observations = @r.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
-    @observations = @r.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
-	@observation = Observation.new
+    @s = @observative_session.observations.ransack([:q])
+    @observations = @s.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
+    @observations = @s.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
+	@observation = @observative_session.observations.new
   end
 
   # Metodo ereditato dalla classe ApplicationController.
@@ -32,7 +37,7 @@ class ObservativeSessionsController < ApplicationController
   # che presenta i dettagli della sessione osservativa. In caso contrario, verrà
   # visualizzato un messaggio d'errore.
   def create
-    @observative_session = current_user.observative_sessions.build(observative_session_params)
+    @observative_session = current_user.observative_sessions.new(observative_session_params)
    
     respond_to do |format|
       if @observative_session.save

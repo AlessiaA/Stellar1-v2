@@ -1,55 +1,57 @@
 #
-# Classe controller che implementa le funzionalità CRUD per la 
-# classe model "ObservativeSession".
+# Classe controller che implementa le funzionalità CRUD per la classe model "Observation".
 #
 class ObservationsController < ApplicationController
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
 
-  # Metodo che recupera le sessioni osservative (eventualmente mediante ricerca), 
-  # le ordina, attua una paginazione delle stesse ed in seguito
-  # le visualizza.
+  # Metodo che recupera i telescopi (eventualmente mediante ricerca), 
+  # li ordina, attua una paginazione degli stessi ed in seguito
+  # li visualizza.
   def index
-    @r = Observation.ransack(:observative_session)
-    @observations = @r.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
+    @s = @observative_session.observations.ransack([:q])
+    @observations = @s.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
     @observations = Observation.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
-	@observation = Observation.new
- end
+	@observation = @observative_session.observations.new
+  end
 
   # Metodo ereditato dalla classe ApplicationController.
   def show
+  end
+
+  # GET /observations/new
+  def new
+    @observation = @observative_session.observations.new
   end
 
   # Metodo ereditato dalla classe ApplicationController.
   def edit
   end
 
-  # Questo metodo crea un'istanza di ObservativeSession e la salva nel database.
+  # Questo metodo crea un'istanza di Observation e la salva nel database.
   # Se l'operazione si conclude con successo, avverrà una redirezione alla pagina
-  # che presenta i dettagli della sessione osservativa. In caso contrario, verrà
+  # che presenta i dettagli dello strumento creato. In caso contrario, verrà
   # visualizzato un messaggio d'errore.
   def create
-    @observation = @observative_session.observations.build(observation_params)
-   
+    @observation = @observative_session.observations.new(observation_params)
+
     respond_to do |format|
       if @observation.save
-        format.html { redirect_to @observation, notice: 'Observative session was successfully created.' }
+        format.html { redirect_to [@observative_session, @observation], notice: 'Observation was successfully created.' }
         format.json { render :show, status: :created, location: @observation }
-      else 
-	  puts current_user.id
-	  Rails.logger.info(@observation.errors.inspect) 
+      else
         format.html { render :new }
         format.json { render json: @observation.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # Metodo che aggiorna un'istanza di ObservativeSession. Se l'operazione avviene con successo,
-  # avverrà una redirezione alla pagina che visualizza i dettagli della sessione osservativa.
+  # Metodo che aggiorna un'istanza di Observation. Se l'operazione avviene con successo,
+  # avverrà una redirezione alla pagina che visualizza i dettagli dello strumento aggiornato.
   # In caso contrario, verrà visualizzato un messaggio d'errore.
   def update
     respond_to do |format|
       if @observation.update(observation_params)
-        format.html { redirect_to @observation, notice: 'Observative session was successfully updated.' }
+        format.html { redirect_to [@observative_session, @observation], notice: 'Observation was successfully updated.' }
         format.json { render :show, status: :ok, location: @observation }
       else
         format.html { render :edit }
@@ -57,19 +59,13 @@ class ObservationsController < ApplicationController
       end
     end
   end
-  
-  # Metodo che crea un'istanza di ObservativeSession, la quale verrà 
-  # passata alla vista corrispondente all'URL "/observations/1/edit".
-  def new
-    @observation = Observation.new
-  end
 
-  # Metodo che elimina un'istanza di ObservativeSession. Se l'operazione avviene con
-  # successo, il browser verrà redirezionato alla lista delle sessioni osservative.
+  # Metodo che elimina un'istanza di Observation. Se l'operazione avviene con
+  # successo, il browser verrà redirezionato alla lista di telescopi.
   def destroy
     @observation.destroy
     respond_to do |format|
-      format.html { redirect_to observation_url, notice: 'Observative session was successfully destroyed.' }
+      format.html { redirect_to observative_session_url, notice: 'Observation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -80,8 +76,8 @@ class ObservationsController < ApplicationController
     end
 
     # Metodo che imposta i parametri richiesti e ammessi durante la creazione o la modifica
-    # di un'istanza di ObservativeSession.
+    # di un'istanza di Observation.
     def observation_params
-      params.require(:observation).permit(:start_time, :celestial_body_name, :binocular_id, :telescope_id, :eyepiece_id, :filter_id, :rating, :description, :notes)
+      params.require(:observation).permit(:start_time, :celestial_body_name, :telescope_name, :binocular_name, :filter_name, :eyepiece_name, :rating, :description, :notes)
     end
 end

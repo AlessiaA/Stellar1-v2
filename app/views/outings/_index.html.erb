@@ -1,8 +1,3 @@
-<% if Date.today > current_user.subscription_expiration+31.days %>
-<div class="month_expired">
-	<p>La tua sottoscrizione è scaduta da più di un mese non puoi più accedere a queste informazioni</p>
-</div>
-<% else %>
 <%= render 'outings/new_modal'%>
 <div class="panel panel-default" id="outings">
   <div class="panel-heading">
@@ -25,7 +20,7 @@
           <%= outing.location %><br />
           <%= outing.time.strftime('%H:%M') %><br /><br />
 		  <% if current_user.role == 'admin' %>
-          <%= link_to 'Modifica', edit_outing_path(outing) %>
+          <%= link_to 'Modifica', edit_outing_path(outing) %> |
           <%= link_to 'Elimina', outing, method: :delete, data: { confirm: 'Sei sicuro?' } %>
 		  <% end %>	
 		  </td>
@@ -36,4 +31,3 @@
   </table>
   <span><center><%= will_paginate @outings, previous_label: '<', next_label: '>' %></center></span>
 </div>
-<% end %>

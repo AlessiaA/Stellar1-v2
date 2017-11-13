@@ -2,7 +2,7 @@
  @import "bootstrap";
 
  body {
-	background: #144269 no-repeat;
+	background: #144269;
 }
  
  .container {
@@ -12,6 +12,31 @@
  .pl-0 {
      padding-left: 0 !important;
  }
+ /******************************************
+ *
+ *            HEADER
+ *
+ ******************************************/
+ .header {
+	background: linear-gradient(#144269, #337ab7);
+	color: #FFFFFF;
+ }
+ 
+ .header h1 {
+    padding: 0.8em 0;
+	font-size: 4em;
+	
+ }
+ 
+#login {
+	padding:7em 0 5.5em 0;
+ }
+ 
+ /****************************************
+ *
+ *            NAVBAR
+ *
+ ****************************************/
  
  .navbar {
 	border:2px solid #2681cf;
@@ -45,6 +70,42 @@
 	line-height:1em;
 }
 
+/**********************************************
+*
+*               FOOTER
+*
+**********************************************/
+
+footer {
+	width:100%;
+	
+}
+
+.footer {
+	background: linear-gradient(#337ab7, #144269);
+	color: #FFFFFF;
+	padding: 0 1.5em;
+	
+}
+
+.footer h1 {
+	font-size: 1.5em;
+}
+
+.footer a {
+	color: #f79227;
+	text-decoration:underline;
+}
+
+.footer a:hover {
+	color: #ff7119;
+}
+
+/**********************************************
+*
+*          CONTENT
+*
+**********************************************/
 
 #observative_sessions {
 	width:80%;

@@ -18,12 +18,12 @@ Rails.application.routes.draw do
   # CELESTIAL BODIES
   resources :celestial_bodies
   # OBSERVATIVE SESSIONS
-  resources :observative_sessions
+  resources :observative_sessions do
   # OBSERVATIONS
   resources :observations
+  end
   # OUTINGS
   resources :outings
-
   root to: 'application#index'
 
 end
