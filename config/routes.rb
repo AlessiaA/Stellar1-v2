@@ -22,8 +22,10 @@ Rails.application.routes.draw do
   # OBSERVATIONS
   resources :observations
   end
+  get '/report', to: 'observative_sessions#report'
+  
   # OUTINGS
   resources :outings
   root to: 'application#index'
-
+  
 end

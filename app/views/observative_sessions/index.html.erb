@@ -67,4 +67,5 @@
   <span><center><%= will_paginate @observative_sessions, previous_label: 'Precedente', next_label: 'Successivo' %></center></span>
 </div>
 <%= render 'outings/index'%>
+<%= link_to "Stampa report", report_path, class: "print" %>
 <%= render 'layouts/footer_logged'%>

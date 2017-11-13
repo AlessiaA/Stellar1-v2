@@ -118,6 +118,25 @@ footer {
 	float:right;
 }
 
+.print {
+	border-radius: 4px;
+	color: #FFFFFF;
+	background: #337ab7;
+	display: inline-block;
+	padding: 1em;
+	margin-bottom:1.5em;
+}
+
+.print:hover {
+	color: #FFFFFF;
+	background: #2e6da4;
+}
+
+.print:focus {
+	color:#FFFFFF;
+}
+
+
 .expiring {
 	color:#FF0000;
 }
@@ -147,4 +166,59 @@ tr:nth-child(even) {
 
 .clear {
 	clear:both;
+}
+
+.report h1 {
+	text-align:center;
+	font-weight: bold;
+	font-size:1.5em;
+}
+
+.report-body {
+	font-weight: bold;
+	border-bottom: 1px solid #ddd;
+}
+
+.report-body .col-sm-12 {
+	padding:1.5em 0;
+}
+
+.report-body .clear {
+	padding-bottom:1em;
+}
+
+.description {
+	margin-bottom:5em;
+}
+
+@media print {
+
+body {
+	background:#FFFFFF;
+}
+
+#report-page, #report-page-1 {
+	border-top-color:#000000;
+	border-left-color:#000000;
+	border-right-color:#000000;
+	border-bottom-color:transparent;
+}
+
+.panel-default .report {
+	border-color: #000000;
+}
+
+.report-body {
+	border-bottom: 1px solid #000000;
+}
+
+.print {
+	display:none;
+}
+
+footer{
+	display:none;
+}
+
+
 }

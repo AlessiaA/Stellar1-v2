@@ -1,0 +1,132 @@
+ <a href="#" class="print" onclick="window.print();return false;">Stampa</a>
+<div class="panel panel-default" id="report-page">
+  <div class="panel-heading report">
+    <h1 class="panel-title">Report Sessione Osservativa</h1> 
+  </div>
+  <div class="panel-body report-body">
+	<div class="col-sm-12">
+		<div class="col-sm-11">
+		Nome osservatore:
+		</div>
+		<div class="col-sm-3">
+		Data:
+		</div>
+		<div class="col-sm-3">
+		Ora inizio:
+		</div>
+		<div class="col-sm-3">
+		Ora fine:
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<p>Luogo</p>
+		<div class="col-sm-11">
+		Nome:
+		</div>
+		<div class="col-sm-3">
+		Latitudine:
+		</div>
+		<div class="col-sm-3">
+		Longitudine:
+		</div>
+		<div class="col-sm-3">
+		Altitudine:
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<p>Qualità del cielo</p>
+		<div class="col-sm-3">
+		Scala di Bortle:
+		</div>
+		<div class="col-sm-3">
+		Scala SQM:
+		</div>
+		<div class="col-sm-11 clear">
+		Note:
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<p>Seeing astronomico</p>
+		<div class="col-sm-3">
+		Scala di Antoniadi:
+		</div>
+		<div class="col-sm-3">
+		Scala di Pickering:
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="col-sm-3">
+		Trasparenza del cielo:
+		</div>
+	</div>
+	<div class="col-sm-12 clear">
+		Note:
+	</div>
+</div>
+</div>
+<div class="panel panel-default" id="report-page-1">	
+  <div class="panel-heading report">
+    <h1 class="panel-title">Corpi celesti</h1> 
+  </div>
+ <% (1..10).each do |i| %>
+  <div class="panel-body report-body">
+	<div class="col-sm-12">
+		<div class="col-sm-6">
+		<%= i %>) Nome:
+		</div>
+		<div class="col-sm-3">
+		Tipologia:
+		</div>
+		<div class="col-sm-3">
+		Ora inizio:
+		</div>
+		<div class="col-sm-3">
+		Ascensione retta:
+		</div>
+		<div class="col-sm-3">
+		Declinazione:
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="col-sm-3">
+		Dimensione dell'oggetto:
+		</div>
+		<div class="col-sm-3">
+		Magnitudine:
+		</div>
+		<div class="col-sm-3">
+		Separazione:
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="col-sm-3">
+		Costellazione:
+		</div>
+		<div class="col-sm-3">
+		Numero di mappa:
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="col-sm-3">
+		Strumento:
+		</div>
+		<div class="col-sm-3">
+		Oculare:
+		</div>
+		<div class="col-sm-3">
+		Filtro:
+		</div>
+	</div>
+	<div class="col-sm-12">
+		Rating:
+	</div>
+	<div class="col-sm-12 description">
+		Descrizione:
+	</div>
+	<div class="col-sm-12 clear">
+		Note:
+    </div>
+	</div>
+	<% end %>
+</div>
+<%= render 'layouts/footer_logged'%>
