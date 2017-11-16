@@ -8,10 +8,10 @@ class ObservationsController < ApplicationController
   # li ordina, attua una paginazione degli stessi ed in seguito
   # li visualizza.
   def index
-    @s = @observative_session.observations.ransack([:q])
-    @observations = @s.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
-    @observations = Observation.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
-	@observation = @observative_session.observations.new
+  #@s = Observation.ransack(:observative_session)
+  #@observations = @s.result.order(params[:order]).paginate(page: params[:page]) if params[:s].present?
+  #@observations = @s.result.order(params[:order]).paginate(page: params[:page]) unless params[:s].present?
+  #@observation = Observation.new
   end
 
   # Metodo ereditato dalla classe ApplicationController.
@@ -20,11 +20,15 @@ class ObservationsController < ApplicationController
 
   # GET /observations/new
   def new
-    @observation = @observative_session.observations.new
+	@observative_session = ObservativeSession.find(params[:observative_session_id])
+    @observation = @observative_session.observations.build(observation_params)
+	@observation.user_id = current_user.id
   end
 
   # Metodo ereditato dalla classe ApplicationController.
   def edit
+	@observative_session = ObservativeSession.find(params[:observative_session_id])
+	@observation = @observative_session.observations.find(params[:id])
   end
 
   # Questo metodo crea un'istanza di Observation e la salva nel database.
@@ -32,8 +36,10 @@ class ObservationsController < ApplicationController
   # che presenta i dettagli dello strumento creato. In caso contrario, verrà
   # visualizzato un messaggio d'errore.
   def create
-    @observation = @observative_session.observations.new(observation_params)
-
+    @observative_session = ObservativeSession.find(params[:observative_session_id])
+    @observation = @observative_session.observations.build(observation_params)
+	@observation.user_id = current_user.id
+	
     respond_to do |format|
       if @observation.save
         format.html { redirect_to [@observative_session, @observation], notice: 'Observation was successfully created.' }
@@ -49,8 +55,10 @@ class ObservationsController < ApplicationController
   # avverrà una redirezione alla pagina che visualizza i dettagli dello strumento aggiornato.
   # In caso contrario, verrà visualizzato un messaggio d'errore.
   def update
+    @observative_session = ObservativeSession.find(params[:observative_session_id])
+	@observation = @observative_session.observations.find(params[:id])
     respond_to do |format|
-      if @observation.update(observation_params)
+      if @observative_session.observations.update(observation_params)
         format.html { redirect_to [@observative_session, @observation], notice: 'Observation was successfully updated.' }
         format.json { render :show, status: :ok, location: @observation }
       else
@@ -65,7 +73,7 @@ class ObservationsController < ApplicationController
   def destroy
     @observation.destroy
     respond_to do |format|
-      format.html { redirect_to observative_session_url, notice: 'Observation was successfully destroyed.' }
+      format.html { redirect_to observative_session_url(@observation.observative_session_id), notice: 'Observation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

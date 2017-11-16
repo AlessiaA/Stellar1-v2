@@ -9,23 +9,29 @@ class ObservativeSessionsController < ApplicationController
   # le ordina, attua una paginazione delle stesse ed in seguito
   # le visualizza.
   def index
-    @q = ObservativeSession.ransack(:user)
+	if params[:order] == nil
+    params[:order] = 'created_at DESC'
+	end
+    @q = ObservativeSession.ransack(params[:q])
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
 	@observative_session = ObservativeSession.new
 	
 	@r = Outing.ransack(params[:r])
-	@outings = @r.result.ransack(params[:r]).paginate(page: params[:page]) if params[:r].present?
+	@outings = @r.result.order('day DESC').paginate(page: params[:page]) if params[:r].present?
     @outings = Outing.order('day DESC').paginate(page: params[:page]) unless params[:r].present?
 	@outing = Outing.new
  end
 
   # Metodo ereditato dalla classe ApplicationController.
   def show
-    @s = @observative_session.observations.ransack([:q])
-    @observations = @s.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
-    @observations = @s.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
-	@observation = @observative_session.observations.new
+	if params[:order] == nil
+    params[:order] = 'created_at DESC'
+	end
+    @s = Observation.ransack(observative_session_id_eq: @observative_session.id)
+    @observations = @s.result.order(params[:order]).paginate(page: params[:page]) if params[:s].present?
+    @observations = @s.result.order(params[:order]).paginate(page: params[:page]) unless params[:s].present?
+	@observation = Observation.new
   end
 
   # Metodo ereditato dalla classe ApplicationController.

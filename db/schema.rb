@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171110234939) do
+ActiveRecord::Schema.define(version: 20171108110443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20171110234939) do
     t.index ["name"], name: "index_binoculars_on_name"
   end
 
-  create_table "celestial_bodies", id: :serial, force: :cascade do |t|
+  create_table "celestial_bodies", force: :cascade do |t|
     t.string "name"
     t.string "typology"
     t.float "size"
@@ -68,25 +68,25 @@ ActiveRecord::Schema.define(version: 20171110234939) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "observations", id: :serial, force: :cascade do |t|
+  create_table "observations", force: :cascade do |t|
     t.datetime "start_time"
     t.string "description"
     t.integer "rating"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "celestial_body_name"
     t.bigint "user_id"
     t.bigint "observative_session_id"
     t.string "telescope_name"
     t.string "binocular_name"
     t.string "eyepiece_name"
     t.string "filter_name"
-    t.string "celestial_body_name"
     t.index ["observative_session_id"], name: "index_observations_on_observative_session_id"
     t.index ["user_id"], name: "index_observations_on_user_id"
   end
 
-  create_table "observative_sessions", id: :serial, force: :cascade do |t|
+  create_table "observative_sessions", force: :cascade do |t|
     t.string "name"
     t.datetime "start"
     t.datetime "end"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20171110234939) do
     t.index ["user_id"], name: "index_observative_sessions_on_user_id"
   end
 
-  create_table "outings", id: :serial, force: :cascade do |t|
+  create_table "outings", force: :cascade do |t|
     t.datetime "day"
     t.string "location"
     t.datetime "time"
@@ -154,7 +154,4 @@ ActiveRecord::Schema.define(version: 20171110234939) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "observations", "observative_sessions"
-  add_foreign_key "observations", "users"
-  add_foreign_key "observative_sessions", "users"
 end

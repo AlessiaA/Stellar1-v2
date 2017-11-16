@@ -3,7 +3,7 @@
     <h1 class="panel-title">Modifica osservazione</h1>
   </div>
   <div class="panel-body">
-    <%= render 'form', observation: @observation %>
+    <%= render 'form', observation: ([@observative_session, @observation]) %>
   </div>
 </div>
 <%= render 'layouts/footer_logged'%>

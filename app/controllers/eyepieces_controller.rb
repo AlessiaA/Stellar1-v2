@@ -8,6 +8,9 @@ class EyepiecesController < ApplicationController
   # li ordina, attua una paginazione degli stessi ed in seguito
   # li visualizza.
   def index
+  if params[:order] == nil
+    params[:order] = 'created_at DESC'
+	end
     @q = Eyepiece.ransack(params[:q])
     @eyepieces = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
     @eyepieces = Eyepiece.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?

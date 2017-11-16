@@ -42,7 +42,7 @@
         <div class="col-sm-4 col-sm-offset-4">
           <div class="form-group">
             <label for="order">Ordina risultati per</label>
-            <%= select_tag 'order', options_for_select([['Nessuno',''], ['Nome', 'name'], ['Lunghezza focale','focal_length'], ['Oculare','ocular'], ['Campo visione apparente','apparent_fov'], ['Dimensione','size']], params[:order] || ''), class: 'form-control', onchange: "$('#eyepiece_search').submit();" %>
+            <%= select_tag 'order', options_for_select([['Nessuno','created_at DESC'], ['Nome', 'name'], ['Lunghezza focale','focal_length'], ['Oculare','ocular'], ['Campo visione apparente','apparent_fov'], ['Dimensione','size']], params[:order] || ''), class: 'form-control', onchange: "$('#eyepiece_search').submit();" %>
           </div>
         </div>
       </div>

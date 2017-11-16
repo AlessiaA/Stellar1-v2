@@ -23,7 +23,7 @@ class CelestialBodiesControllerTest < ActionDispatch::IntegrationTest
   # creazione corpo celeste
   test "should create celestial_body" do
     assert_difference('CelestialBody.count') do
-      post celestial_bodies_url, params: { celestial_body: { constellation: @celestial_body.constellation, map_chart_number: @celestial_body.map_chart_number, name: @celestial_body.name, size: @celestial_body.size, typology: @celestial_body.typology } }
+      post celestial_bodies_url, params: { celestial_body: { constellation: @celestial_body.constellation, ascension: @celestial_body.ascension, declination: @celestial_body.declination, magnitudo: @celestial_body.magnitudo, separation: @celestial_body.separation, map_chart_number: @celestial_body.map_chart_number, name: @celestial_body.name, size: @celestial_body.size, typology: @celestial_body.typology } }
     end
 
     assert_redirected_to celestial_body_url(CelestialBody.last)
@@ -42,7 +42,7 @@ class CelestialBodiesControllerTest < ActionDispatch::IntegrationTest
 
   # aggiornamento corpo celeste
   test "should update celestial_body" do
-    patch celestial_body_url(@celestial_body), params: { celestial_body: { constellation: @celestial_body.constellation, map_chart_number: @celestial_body.map_chart_number, name: @celestial_body.name, size: @celestial_body.size, typology: @celestial_body.typology } }
+    patch celestial_body_url(@celestial_body), params: { celestial_body: { constellation: @celestial_body.constellation, ascension: @celestial_body.ascension, declination: @celestial_body.declination, magnitudo: @celestial_body.magnitudo, separation: @celestial_body.separation, map_chart_number: @celestial_body.map_chart_number, name: @celestial_body.name, size: @celestial_body.size, typology: @celestial_body.typology } }
     assert_redirected_to celestial_body_url(@celestial_body)
   end
 

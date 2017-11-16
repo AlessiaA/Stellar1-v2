@@ -10,7 +10,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     # TEST 2.1
     test "should get index" do
-        get root_path
+        get users_url
         assert_response :success
     end
 
@@ -21,7 +21,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
             birth: @user.birth, subscription_expiration: @user.subscription_expiration, password: "password"} }
         end
 
-        assert_redirected_to root_path
+        assert_redirected_to users_url
     end
 
     # TEST 2.4

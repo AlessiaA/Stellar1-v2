@@ -4,6 +4,9 @@
 class UsersController < ApplicationController
 
   def index
+	if params[:order] == nil
+    params[:order] = 'created_at DESC'
+	end
 	@q = User.ransack(params[:q])
     # I risultati della ricerca vengono ordinati per qualche attributo ed in seguito paginati.
     @users = @q.result(distinct: true).order(params[:order]).paginate(page: params[:page]) if params[:q].present?
@@ -25,7 +28,7 @@ class UsersController < ApplicationController
 
   # Metodo che produce la lista degli utenti a cui è scaduta la tessera.
   def list_expired
-    @users = User.where("subscription_expiration < ?", DateTime.now).paginate(page: params[:page])
+    @users = User.where("subscription_expiration < ?", DateTime.now).order('subscription_expiration DESC').paginate(page: params[:page])
   end
 
   # Metodo che visualizza i dettagli di un singolo membro.

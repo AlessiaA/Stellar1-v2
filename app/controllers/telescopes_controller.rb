@@ -8,6 +8,9 @@ class TelescopesController < ApplicationController
   # li ordina, attua una paginazione degli stessi ed in seguito
   # li visualizza.
   def index
+	if params[:order] == nil
+    params[:order] = 'created_at DESC'
+	end
     @q = Telescope.ransack(params[:q])
     @telescopes = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
     @telescopes = Telescope.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?

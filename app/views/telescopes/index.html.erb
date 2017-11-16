@@ -42,7 +42,7 @@
         <div class="col-sm-4 col-sm-offset-4">
           <div class="form-group">
             <label for="order">Ordina risultati per</label>
-            <%= select_tag 'order', options_for_select([['Nessuno',''], ['Nome', 'name'], ['Risoluzione angolare','angular_resolution'], ['Magnitudine','magnitude'], ['Rapporto Focale','focal_ratio'], ['Cercatore','finderscope'], ['Lunghezza Focale', 'focal_length'], ['Apertura','aperture']], params[:order] || ''), class: 'form-control', onchange: "$('#telescope_search').submit();" %>
+            <%= select_tag 'order', options_for_select([['Nessuno','created_at DESC'], ['Nome', 'name'], ['Risoluzione angolare','angular_resolution'], ['Magnitudine','magnitude'], ['Rapporto Focale','focal_ratio'], ['Cercatore','finderscope'], ['Lunghezza Focale', 'focal_length'], ['Apertura','aperture']], params[:order] || ''), class: 'form-control', onchange: "$('#telescope_search').submit();" %>
           </div>
         </div>
       </div>

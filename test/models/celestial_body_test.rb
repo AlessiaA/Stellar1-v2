@@ -5,6 +5,10 @@
 #  id               :integer          not null, primary key
 #  name             :string
 #  typology         :string
+#  ascension        :time
+#  declination      :integer
+#  magnitudo        :float
+#  separation       :integer
 #  size             :float
 #  constellation    :string
 #  map_chart_number :integer

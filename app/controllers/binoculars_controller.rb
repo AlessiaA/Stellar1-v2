@@ -8,6 +8,9 @@ class BinocularsController < ApplicationController
   # li ordina, attua una paginazione degli stessi ed in seguito
   # li visualizza.
   def index
+  if params[:order] == nil
+    params[:order] = 'created_at DESC'
+	end
     @q = Binocular.ransack(params[:q])
     @binoculars = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
     @binoculars = Binocular.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?

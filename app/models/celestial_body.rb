@@ -22,7 +22,6 @@
 class CelestialBody < ApplicationRecord
   # verifica la correttezza dei dati inseriti per i campi specificati
   validates :name, :typology, :ascension, :declination, :magnitudo, :size, :constellation, :map_chart_number, presence: true
-  
   # relazioni
   #has_many :observations, dependent: :destroy
 

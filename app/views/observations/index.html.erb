@@ -13,12 +13,12 @@
       </span>
     </p>
     <hr>
-	<%= search_form_for @s, url: observative_session_path(params[:id]) do |f| %>
+	<%= search_form_for @s, url: observative_session_observation_path(params[:id]) do |f| %>
       <div class="row">
         <div class="col-sm-2">
           <div class="form-group">
             <label for="order">Ordina risultati per</label>
-            <%= select_tag 'order', options_for_select([['Nessuno','Created_at DESC'], ['Ora', 'start_time'], ['Rating', 'rating']], params[:order] || ''), class: 'form-control', onchange: "$('#observation_search').submit();" %>
+            <%= select_tag 'order', options_for_select([['Nessuno',''], ['Ora', 'start_time'], ['Rating', 'rating']], params[:order] || ''), class: 'form-control', onchange: "$('#observation_search').submit();" %>
           </div>
         </div>
       </div>
@@ -39,19 +39,17 @@
     <tbody>
       <% @observations.each do |observation| %>
         <tr>
-		<td>
 		<% if observation.start_time != nil %>
-		  <%= observation.start_time.strftime("%H:%M") %>
+		  <td><%= observation.start_time.strftime("%H:%M") %></td>
 		<% end %>
-		</td>
 		  <td><%= observation.celestial_body_name %></td>
           <td><%= observation.telescope_name %></td>
 		  <td><%= observation.binocular_name %></td>
-		  <td><%= observation.observative_session.user.name %></td>
-          <td><%= link_to 'Visualizza', observative_session_observation_path(@observative_session, observation) %></td>
+		  <td><%= observation.user_name %></td>
+          <td><%= link_to 'Visualizza', observation %></td>
 		  <% if current_user == 'admin' || Date.today < current_user.subscription_expiration+31.days %>
-			<td><%= link_to 'Modifica', edit_observative_session_observation_path(@observative_session, observation) %></td> 
-            <td><%= link_to 'Elimina', observative_session_observation_path(@observative_session, observation), method: :delete, data: { confirm: 'Sei sicuro?' } %></td>
+			<td><%= link_to 'Modifica', edit_observative_session_observation_path(@observative_session, observation) %></td>
+            <td><%= link_to 'Elimina', observation, method: :delete, data: { confirm: 'Sei sicuro?' } %></td>
 		  <% end %>
 		</tr>
       <% end %>

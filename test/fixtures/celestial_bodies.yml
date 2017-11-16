@@ -5,6 +5,10 @@
 #  id               :integer          not null, primary key
 #  name             :string
 #  typology         :string
+#  ascension        :time
+#  declination      :integer
+#  magnitudo        :float
+#  separation       :integer
 #  size             :float
 #  constellation    :string
 #  map_chart_number :integer
@@ -18,6 +22,10 @@ one:
   name: MyString
   typology: MyString
   size: 1.5
+  ascension: 15:27:43 
+  declination: 1
+  magnitudo: 1
+  separation: 1
   constellation: MyString
   map_chart_number: 1
 
@@ -25,5 +33,9 @@ two:
   name: MyString
   typology: MyString
   size: 1.5
+  ascension: 1
+  declination: 1
+  magnitudo: 1
+  separation: 1
   constellation: MyString
   map_chart_number: 1

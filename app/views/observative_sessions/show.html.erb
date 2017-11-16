@@ -16,7 +16,7 @@
 		<%= @observative_session.end.strftime("%H:%M") %>
 		<% end %>
 		</p>
-		<p><span><strong>Nome del luogo:</strong></span> <%= @observative_session.name %></p>
+		<p><span><strong>Nome del luogo:</strong></span><%= @observative_session.name %></p>
         <p><span><strong>Coordinate:</strong></span><br /> Latitudine:<%= @observative_session.latitude %> &emsp;Longitudine:<%= @observative_session.longitude %> &emsp;Altitudine:<%= @observative_session.altitude %></p>
         <p><span><strong>Qualità del cielo:</strong></span><br /> Scala di Bortle:<%= @observative_session.bortle %> &emsp;Scala SQM:<%= @observative_session.sqm %></p>
         <p><span><strong>Seeing astronomico:</strong></span><br /> Scala di Antoniadi:<%= @observative_session.antoniadi %> &emsp;Scala di pickering:<%= @observative_session.pickering %></p>

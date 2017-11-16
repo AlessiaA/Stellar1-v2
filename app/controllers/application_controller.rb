@@ -23,15 +23,18 @@ class ApplicationController < ActionController::Base
 
   # Metodo che visualizza la pagina iniziale degli utenti amministratori.
   def admin_index
-    # Esegue la ricerca degli utenti.
+    # Esegue la ricerca.
+	if params[:order] == nil
+    params[:order] = 'created_at DESC'
+	end
     @q = ObservativeSession.ransack(user_id_eq: current_user.id)
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
     @observative_session = ObservativeSession.new
 	
-	@r = Outing.ransack(params[:q])
-	@outings = @r.result.ransack(params[:q]).paginate(page: params[:page]) if params[:q].present?
-    @outings = Outing.order('day DESC').paginate(page: params[:page]) unless params[:q].present?
+	@r = Outing.ransack(params[:r])
+	@outings = @r.result.order('day DESC').paginate(page: params[:page]) if params[:r].present?
+    @outings = Outing.order('day DESC').paginate(page: params[:page]) unless params[:r].present?
 	@outing = Outing.new
 	# visualizza la lista degli utenti iscritti.
     render 'observative_sessions/index'
@@ -39,13 +42,16 @@ class ApplicationController < ActionController::Base
 
   # Metodo che visualizza la pagina iniziale degli utenti ordinari.
   def user_index
+	if params[:order] == nil
+    params[:order] = 'created_at DESC'
+	end
 	@q = ObservativeSession.ransack(user_id_eq: current_user.id)
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
     @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
 	@observative_session = ObservativeSession.new
     
 	@r = Outing.ransack(params[:q])
-	@outings = @r.result.ransack(params[:q]).paginate(page: params[:page]) if params[:q].present?
+	@outings = @r.result.order('day DESC').paginate(page: params[:page]) if params[:q].present?
     @outings = Outing.order('day DESC').paginate(page: params[:page]) unless params[:q].present?
 	@outing = Outing.new
 	# visualizza la pagina iniziale degli utenti ordinari.

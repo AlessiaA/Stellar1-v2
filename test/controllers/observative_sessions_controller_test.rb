@@ -10,7 +10,7 @@ class ObservativeSessionsControllerTest < ActionDispatch::IntegrationTest
 
   # raggiungibilità pagina
   test "should get index" do
-    get observative_sessions_url
+    get root_path
     assert_response :success
   end
 
@@ -23,7 +23,7 @@ class ObservativeSessionsControllerTest < ActionDispatch::IntegrationTest
   # creazione sessione osservativa
   test "should create observative_session" do
     assert_difference('ObservativeSession.count') do
-      post observative_sessions_url, params: { observative_session: { antoniadi: @observative_session.antoniadi, category: @observative_session.category, end: @observative_session.end, name: @observative_session.name, pickering: @observative_session.pickering, sky_transparency: @observative_session.sky_transparency, start: @observative_session.start, user_id: @observative_session.user_id } }
+      post observative_sessions_url, params: { observative_session: { antoniadi: @observative_session.antoniadi, pickering: @observative_session.pickering, bortle: @observative_session.bortle, sqm: @observative_session.sqm, date: @observative_session.date, start: @observative_session.start, end: @observative_session.end, name: @observative_session.name, latitude: @observative_session.latitude, longitude: @observative_session.longitude, altitude: @observative_session.altitude, completed: @observative_session.completed, notes: @observative_session.notes, sky_transparency: @observative_session.sky_transparency, user_id: @observative_session.user_id } }
     end
 
     assert_redirected_to observative_session_url(ObservativeSession.last)
@@ -42,7 +42,7 @@ class ObservativeSessionsControllerTest < ActionDispatch::IntegrationTest
 
   # aggiornamento sessione osservativa
   test "should update observative_session" do
-    patch observative_session_url(@observative_session), params: { observative_session: { antoniadi: @observative_session.antoniadi, category: @observative_session.category, end: @observative_session.end, name: @observative_session.name, pickering: @observative_session.pickering, sky_transparency: @observative_session.sky_transparency, start: @observative_session.start } }
+    patch observative_session_url(@observative_session), params: { observative_session: { antoniadi: @observative_session.antoniadi, pickering: @observative_session.pickering, bortle: @observative_session.bortle, sqm: @observative_session.sqm, date: @observative_session.date, start: @observative_session.start, end: @observative_session.end, name: @observative_session.name, latitude: @observative_session.latitude, longitude: @observative_session.longitude, altitude: @observative_session.altitude, completed: @observative_session.completed, notes: @observative_session.notes, sky_transparency: @observative_session.sky_transparency, user_id: @observative_session.user_id } }
     assert_redirected_to observative_session_url(@observative_session)
   end
 
@@ -52,6 +52,6 @@ class ObservativeSessionsControllerTest < ActionDispatch::IntegrationTest
       delete observative_session_url(@observative_session)
     end
 
-    assert_redirected_to observative_sessions_url
+    assert_redirected_to root_path
   end
 end

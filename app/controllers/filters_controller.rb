@@ -8,6 +8,9 @@ class FiltersController < ApplicationController
   # li ordina, attua una paginazione degli stessi ed in seguito
   # li visualizza.
   def index
+	if params[:order] == nil
+    params[:order] = 'created_at DESC'
+	end
     @q = Filter.ransack(params[:q])
     @filters = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
     @filters = Filter.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?

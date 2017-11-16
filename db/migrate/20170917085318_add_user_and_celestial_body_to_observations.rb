@@ -1,6 +1,6 @@
 class AddUserAndCelestialBodyToObservations < ActiveRecord::Migration[5.1]
   def change
-    add_reference :observations, :user, foreign_key: true
-    add_reference :observations, :celestial_body, foreign_key: true
+	 add_column :observations, :celestial_body_name, :string
+     add_reference :observations, :user, index: true
   end
 end

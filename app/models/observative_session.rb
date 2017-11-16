@@ -14,7 +14,7 @@
 #  antoniadi        :integer
 #  pickering        :integer
 #  sky_transparency :integer
-#  user_id          :integer
+#  user_id          :integer         not null
 #  start            :time
 #  end              :time
 #  notes            :text
