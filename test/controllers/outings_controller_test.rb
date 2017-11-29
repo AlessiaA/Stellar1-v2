@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class OutingssControllerTest < ActionDispatch::IntegrationTest
+class OutingsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
   
   setup do
-    @outing = outingss(:one)
+    @outing = outings(:one)
     sign_in users(:admin_user)
   end
 
@@ -23,7 +23,7 @@ class OutingssControllerTest < ActionDispatch::IntegrationTest
       post outings_url, params: { outing: { day: @outing.day, location: @outing.location, time: @outing.time } }
     end
 
-    assert_redirected_to eyepiece_url(Eyepiece.last)
+    assert_redirected_to outing_url(Outing.last)
   end
 
   test "should not create outing" do

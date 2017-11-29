@@ -21,8 +21,8 @@ class ObservationsController < ApplicationController
   # GET /observations/new
   def new
 	@observative_session = ObservativeSession.find(params[:observative_session_id])
-    @observation = @observative_session.observations.build(observation_params)
-	@observation.user_id = current_user.id
+    @observation = Observation.new
+	@observation.observative_session_id = @observative_session.id
   end
 
   # Metodo ereditato dalla classe ApplicationController.
@@ -55,10 +55,8 @@ class ObservationsController < ApplicationController
   # avverrà una redirezione alla pagina che visualizza i dettagli dello strumento aggiornato.
   # In caso contrario, verrà visualizzato un messaggio d'errore.
   def update
-    @observative_session = ObservativeSession.find(params[:observative_session_id])
-	@observation = @observative_session.observations.find(params[:id])
     respond_to do |format|
-      if @observative_session.observations.update(observation_params)
+      if @observation.update(observation_params)
         format.html { redirect_to [@observative_session, @observation], notice: 'Observation was successfully updated.' }
         format.json { render :show, status: :ok, location: @observation }
       else

@@ -23,7 +23,7 @@
 
 one:
   start_time: 2017-09-17 10:22:16
-  celestial_body_name: MyString
+  celestial_body_name: Mars
   telescope_name: MyString
   binocular_name: MyString
   eyepiece_name: MyString
@@ -31,10 +31,12 @@ one:
   description: MyString
   rating: 1
   notes: MyString
+  user_id: 1
+  observative_session_id: 980190962
 
 two:
   start_time: 2017-09-17 10:22:16
-  celestial_body_name: MyString
+  celestial_body_name: Mars
   telescope_name: MyString
   binocular_name: MyString
   eyepiece_name: MyString
@@ -42,3 +44,5 @@ two:
   description: MyString
   rating: 1
   notes: MyString
+  user_id: 1
+  observative_session_id: 980190962

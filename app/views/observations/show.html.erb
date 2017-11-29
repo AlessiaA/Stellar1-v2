@@ -3,7 +3,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">Informazioni osservazione</div>
       <div class="panel-body">
-	    <p><strong>Osservatore:</strong> <%= @observation.observative_session.user.name %></p>
+	    <p><strong>Osservatore:</strong> <%= @observation.user.name %></p>
         <p><span><strong>Ora inizio:</strong></span> 
 		<% if @observation.start_time != nil %>
 		<%= @observation.start_time.strftime("%H:%M") %>

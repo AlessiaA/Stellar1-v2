@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: observative_sessions
+#
+#  id               :integer          not null, primary key
+#  day  			:datetime
+#  location         :string
+#  time             :datetime
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day: 2017-09-17
+  location: MyString
+  time: 2017-09-17 15:27:43
+  
+
+two:
+  day: 2017-09-17
+  location: MyString
+  time: 2017-09-17 15:27:43
+  

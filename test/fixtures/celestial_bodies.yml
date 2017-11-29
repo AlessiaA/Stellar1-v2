@@ -22,7 +22,7 @@ one:
   name: MyString
   typology: MyString
   size: 1.5
-  ascension: 15:27:43 
+  ascension: 2017-09-17 15:27:43 
   declination: 1
   magnitudo: 1
   separation: 1
@@ -33,7 +33,7 @@ two:
   name: MyString
   typology: MyString
   size: 1.5
-  ascension: 1
+  ascension: 2017-09-17 15:27:43
   declination: 1
   magnitudo: 1
   separation: 1

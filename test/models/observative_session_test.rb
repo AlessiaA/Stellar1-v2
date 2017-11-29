@@ -3,7 +3,7 @@
 # Table name: observative_sessions
 #
 #  id               :integer          not null, primary key
-#  datetime			:datetime
+#  date 			:datetime
 #  name             :string
 #  latitude         :decimal
 #  longitude        :decimal

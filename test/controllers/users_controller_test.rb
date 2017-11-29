@@ -21,7 +21,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
             birth: @user.birth, subscription_expiration: @user.subscription_expiration, password: "password"} }
         end
 
-        assert_redirected_to users_url
+        assert_redirected_to User.last
     end
 
     # TEST 2.4

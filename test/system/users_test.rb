@@ -34,7 +34,26 @@ class UsersTest < ApplicationSystemTestCase
     sign_in @admin
     visit root_path
 
-    assert_text "Gestione utenti"
+    assert_text "Gestione sessioni osservative"
+	assert page.has_link?('Utenti')
+    assert page.has_link?('Logout')
+  end
+  
+  # TEST 1.3
+  test "user successful authentication" do
+    visit user_session_path
+
+    assert page.has_field?('Email', type: 'email')
+    assert page.has_field?('Password', type: 'password')
+
+    fill_in "Email", with: @user1.email
+    fill_in "Password", with: "userone"
+    click_on "Accedi"
+
+    sign_in @user1
+    visit root_path
+
+    assert_text "Gestione sessioni osservative"
     assert page.has_link?('Logout')
   end
 

@@ -3,7 +3,7 @@
 # Table name: observative_sessions
 #
 #  id               :integer          not null, primary key
-#  datetime			:datetime
+#  date 			:datetime
 #  name             :string
 #  latitude         :decimal
 #  longitude        :decimal
@@ -26,7 +26,7 @@
 
 one:
   name: MyString
-  datetime: 2017-09-17
+  date: 2017-09-17
   latitude: 1
   longitude: 1
   altitude: 1
@@ -43,7 +43,7 @@ one:
 
 two:
   name: MyString
-  datetime: 2017-09-17
+  date: 2017-09-17
   latitude: 1
   longitude: 1
   altitude: 1
