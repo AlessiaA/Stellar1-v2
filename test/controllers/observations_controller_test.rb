@@ -11,9 +11,7 @@ class ObservationsControllerTest < ActionDispatch::IntegrationTest
 
   # raggiungibilità pagina inserimento
   test "should get new" do
-	@observative_session = ObservativeSession.find(params[:observative_session_id])
     get new_observative_session_observation_path(@observative_session)
-	@observation.observative_session_id = @observative_session.id
     assert_response :success
   end
 
