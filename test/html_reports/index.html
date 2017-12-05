@@ -13,24 +13,24 @@
     <div class="jumbotron">
         <h1>Test Results</h1>
         <p>
-            Finished in 0h00m20s, 3.28 tests/s, 3.95 assertions/s
+            Finished in 0h00m29s, 2.22 tests/s, 2.92 assertions/s
         </p>
         <p>
             <strong>
-            <span class="">64 tests</span>,
-            <span class=""> 77 assertions</span>,
-            <span class="text-danger"> 1 failures</span>,
-            <span class="text-danger"> 6 errors</span>,
+            <span class="text-info">64 tests</span>,
+            <span class="text-info"> 84 assertions</span>,
+            <span class=""> 0 failures</span>,
+            <span class=""> 0 errors</span>,
             <span class=""> 0 skips</span>
             </strong>
         </p>
 
         <div class="progress">
-            <div class="progress-bar progress-bar-info" style="width: 90%">
-                90% passed
+            <div class="progress-bar progress-bar-info" style="width: 100%">
+                100% passed
             </div>
-            <div class="progress-bar progress-bar-danger" style="width: 10%">
-                10% failed
+            <div class="progress-bar progress-bar-danger" style="width: 0%">
+                0% failed
             </div>
             <div class="progress-bar progress-bar-warning" style="width: 0%">
                 0% skipped
@@ -42,275 +42,14 @@
 
     
         <div class="panel panel-default">
-            <div class="panel-heading"><strong>ObservationsControllerTest</strong>
-                <span class="pull-right">
-                    <span class="">7 tests</span>,
-                    <span class=""> 3 assertions</span>,
-                    <span class=""> 0 failures</span>,
-                    <span class="text-danger"> 5 errors</span>,
-                    <span class=""> 0 skips</span>,
-                    <span> finished in 0.3101s</span>
-                </span>
-            </div>
-            <div class="panel-body">
-                <div class="list-group">
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-remove text-danger"  aria-hidden="true"></span>
-                                
-                                test_should_create_observation
-                                <span class="pull-right">
-                                    Assertions 0, time 0.021912s
-                                </span>
-                            </h5>
-                            
-                                <pre class="list-group-item-text">F:/GitHub/Stellar1-v2/test/controllers/observations_controller_test.rb:22
-
-ActionController::RoutingError: No route matches [POST] "/observative_sessions/980190962/observations/298486374"
-    test/controllers/observations_controller_test.rb:23:in `block (2 levels) in <class:ObservationsControllerTest>'
-    test/controllers/observations_controller_test.rb:22:in `block in <class:ObservationsControllerTest>'</pre>
-                            
-                        </div>
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-remove text-danger"  aria-hidden="true"></span>
-                                
-                                test_should_get_new
-                                <span class="pull-right">
-                                    Assertions 0, time 0.012119s
-                                </span>
-                            </h5>
-                            
-                                <pre class="list-group-item-text">C:/RailsInstaller/Ruby2.3.3/lib/ruby/gems/2.3.0/gems/actionpack-5.1.2/lib/action_dispatch/testing/assertions/routing.rb:175
-
-NameError: undefined local variable or method `params' for #<ObservationsControllerTest:0xb9951b8>
-    test/controllers/observations_controller_test.rb:14:in `block in <class:ObservationsControllerTest>'</pre>
-                            
-                        </div>
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-remove text-danger"  aria-hidden="true"></span>
-                                
-                                test_should_not_create_observation
-                                <span class="pull-right">
-                                    Assertions 0, time 0.026708s
-                                </span>
-                            </h5>
-                            
-                                <pre class="list-group-item-text">F:/GitHub/Stellar1-v2/test/controllers/observations_controller_test.rb:30
-
-ActionController::RoutingError: No route matches [POST] "/observative_sessions/980190962/observations/298486374"
-    test/controllers/observations_controller_test.rb:31:in `block (2 levels) in <class:ObservationsControllerTest>'
-    test/controllers/observations_controller_test.rb:30:in `block in <class:ObservationsControllerTest>'</pre>
-                            
-                        </div>
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-remove text-danger"  aria-hidden="true"></span>
-                                
-                                test_should_show_observation
-                                <span class="pull-right">
-                                    Assertions 0, time 0.081962s
-                                </span>
-                            </h5>
-                            
-                                <pre class="list-group-item-text">F:/GitHub/Stellar1-v2/app/views/observations/show.html.erb:6
-
-ActionView::Template::Error: undefined method `name' for nil:NilClass
-    app/views/observations/show.html.erb:6:in `_app_views_observations_show_html_erb__1049959375_96936936'
-    test/controllers/observations_controller_test.rb:37:in `block in <class:ObservationsControllerTest>'</pre>
-                            
-                        </div>
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-remove text-danger"  aria-hidden="true"></span>
-                                
-                                test_should_update_observation
-                                <span class="pull-right">
-                                    Assertions 0, time 0.029595s
-                                </span>
-                            </h5>
-                            
-                                <pre class="list-group-item-text">C:/RailsInstaller/Ruby2.3.3/lib/ruby/gems/2.3.0/gems/actionpack-5.1.2/lib/action_controller/metal/strong_parameters.rb:430
-
-ActionController::ParameterMissing: param is missing or the value is empty: observative_session
-    app/controllers/observative_sessions_controller.rb:101:in `observative_session_params'
-    app/controllers/observative_sessions_controller.rb:67:in `block in update'
-    app/controllers/observative_sessions_controller.rb:66:in `update'
-    test/controllers/observations_controller_test.rb:48:in `block in <class:ObservationsControllerTest>'</pre>
-                            
-                        </div>
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
-                                
-                                test_should_destroy_observation
-                                <span class="pull-right">
-                                    Assertions 2, time 0.040084s
-                                </span>
-                            </h5>
-                            
-                        </div>
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
-                                
-                                test_should_get_edit
-                                <span class="pull-right">
-                                    Assertions 1, time 0.097755s
-                                </span>
-                            </h5>
-                            
-                        </div>
-                    
-                </div>
-            </div>
-        </div>
-    
-        <div class="panel panel-default">
-            <div class="panel-heading"><strong>ObservativeSessionsControllerTest</strong>
-                <span class="pull-right">
-                    <span class="">7 tests</span>,
-                    <span class=""> 9 assertions</span>,
-                    <span class="text-danger"> 1 failures</span>,
-                    <span class="text-danger"> 1 errors</span>,
-                    <span class=""> 0 skips</span>,
-                    <span> finished in 0.7479s</span>
-                </span>
-            </div>
-            <div class="panel-body">
-                <div class="list-group">
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-remove text-danger"  aria-hidden="true"></span>
-                                
-                                test_should_show_observative_session
-                                <span class="pull-right">
-                                    Assertions 0, time 0.167574s
-                                </span>
-                            </h5>
-                            
-                                <pre class="list-group-item-text">F:/GitHub/Stellar1-v2/app/views/observations/_index.html.erb:50
-
-ActionView::Template::Error: undefined method `name' for nil:NilClass
-    app/views/observations/_index.html.erb:50:in `block in _app_views_observations__index_html_erb__221446042_91905924'
-    app/views/observations/_index.html.erb:40:in `_app_views_observations__index_html_erb__221446042_91905924'
-    app/views/observative_sessions/show.html.erb:38:in `_app_views_observative_sessions_show_html_erb___119989870_91818588'
-    test/controllers/observative_sessions_controller_test.rb:34:in `block in <class:ObservativeSessionsControllerTest>'</pre>
-                            
-                        </div>
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-remove text-danger"  aria-hidden="true"></span>
-                                
-                                test_should_update_observative_session
-                                <span class="pull-right">
-                                    Assertions 1, time 0.047808s
-                                </span>
-                            </h5>
-                            
-                                <pre class="list-group-item-text">F:/GitHub/Stellar1-v2/test/controllers/observative_sessions_controller_test.rb:46
-
-Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
-                            
-                        </div>
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
-                                
-                                test_should_create_observative_session
-                                <span class="pull-right">
-                                    Assertions 2, time 0.047479s
-                                </span>
-                            </h5>
-                            
-                        </div>
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
-                                
-                                test_should_destroy_observative_session
-                                <span class="pull-right">
-                                    Assertions 3, time 0.139974s
-                                </span>
-                            </h5>
-                            
-                        </div>
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
-                                
-                                test_should_get_edit
-                                <span class="pull-right">
-                                    Assertions 1, time 0.098102s
-                                </span>
-                            </h5>
-                            
-                        </div>
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
-                                
-                                test_should_get_index
-                                <span class="pull-right">
-                                    Assertions 1, time 0.187323s
-                                </span>
-                            </h5>
-                            
-                        </div>
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
-                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
-                                
-                                test_should_get_new
-                                <span class="pull-right">
-                                    Assertions 1, time 0.059625s
-                                </span>
-                            </h5>
-                            
-                        </div>
-                    
-                </div>
-            </div>
-        </div>
-    
-        <div class="panel panel-default">
             <div class="panel-heading"><strong>BinocularsControllerTest</strong>
                 <span class="pull-right">
                     <span class="text-info">8 tests</span>,
-                    <span class=""> 10 assertions</span>,
+                    <span class="text-info"> 10 assertions</span>,
                     <span class=""> 0 failures</span>,
                     <span class=""> 0 errors</span>,
                     <span class=""> 0 skips</span>,
-                    <span> finished in 0.4468s</span>
+                    <span> finished in 0.5869s</span>
                 </span>
             </div>
             <div class="panel-body">
@@ -323,7 +62,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_create_binocular
                                 <span class="pull-right">
-                                    Assertions 2, time 0.039006s
+                                    Assertions 2, time 0.048554s
                                 </span>
                             </h5>
                             
@@ -336,7 +75,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_destroy_binocular
                                 <span class="pull-right">
-                                    Assertions 2, time 0.032723s
+                                    Assertions 2, time 0.038656s
                                 </span>
                             </h5>
                             
@@ -349,7 +88,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_edit
                                 <span class="pull-right">
-                                    Assertions 1, time 0.070034s
+                                    Assertions 1, time 0.076825s
                                 </span>
                             </h5>
                             
@@ -362,7 +101,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_index
                                 <span class="pull-right">
-                                    Assertions 1, time 0.096478s
+                                    Assertions 1, time 0.135872s
                                 </span>
                             </h5>
                             
@@ -375,7 +114,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_new
                                 <span class="pull-right">
-                                    Assertions 1, time 0.042960s
+                                    Assertions 1, time 0.095388s
                                 </span>
                             </h5>
                             
@@ -388,7 +127,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_not_create_binocular
                                 <span class="pull-right">
-                                    Assertions 1, time 0.064417s
+                                    Assertions 1, time 0.055069s
                                 </span>
                             </h5>
                             
@@ -401,7 +140,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_show_binocular
                                 <span class="pull-right">
-                                    Assertions 1, time 0.052174s
+                                    Assertions 1, time 0.093858s
                                 </span>
                             </h5>
                             
@@ -414,7 +153,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_update_binocular
                                 <span class="pull-right">
-                                    Assertions 1, time 0.049001s
+                                    Assertions 1, time 0.042718s
                                 </span>
                             </h5>
                             
@@ -428,11 +167,11 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
             <div class="panel-heading"><strong>CelestialBodiesControllerTest</strong>
                 <span class="pull-right">
                     <span class="text-info">7 tests</span>,
-                    <span class=""> 9 assertions</span>,
+                    <span class="text-info"> 9 assertions</span>,
                     <span class=""> 0 failures</span>,
                     <span class=""> 0 errors</span>,
                     <span class=""> 0 skips</span>,
-                    <span> finished in 0.4093s</span>
+                    <span> finished in 0.5405s</span>
                 </span>
             </div>
             <div class="panel-body">
@@ -445,7 +184,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_create_celestial_body
                                 <span class="pull-right">
-                                    Assertions 2, time 0.036169s
+                                    Assertions 2, time 0.049790s
                                 </span>
                             </h5>
                             
@@ -458,7 +197,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_destroy_celestial_body
                                 <span class="pull-right">
-                                    Assertions 2, time 0.030135s
+                                    Assertions 2, time 0.046020s
                                 </span>
                             </h5>
                             
@@ -471,7 +210,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_edit
                                 <span class="pull-right">
-                                    Assertions 1, time 0.070057s
+                                    Assertions 1, time 0.090967s
                                 </span>
                             </h5>
                             
@@ -484,7 +223,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_index
                                 <span class="pull-right">
-                                    Assertions 1, time 0.129881s
+                                    Assertions 1, time 0.153832s
                                 </span>
                             </h5>
                             
@@ -497,7 +236,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_new
                                 <span class="pull-right">
-                                    Assertions 1, time 0.070157s
+                                    Assertions 1, time 0.106782s
                                 </span>
                             </h5>
                             
@@ -510,7 +249,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_show_celestial_body
                                 <span class="pull-right">
-                                    Assertions 1, time 0.046094s
+                                    Assertions 1, time 0.057594s
                                 </span>
                             </h5>
                             
@@ -523,7 +262,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_update_celestial_body
                                 <span class="pull-right">
-                                    Assertions 1, time 0.026761s
+                                    Assertions 1, time 0.035537s
                                 </span>
                             </h5>
                             
@@ -537,11 +276,11 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
             <div class="panel-heading"><strong>EyepiecesControllerTest</strong>
                 <span class="pull-right">
                     <span class="text-info">8 tests</span>,
-                    <span class=""> 10 assertions</span>,
+                    <span class="text-info"> 10 assertions</span>,
                     <span class=""> 0 failures</span>,
                     <span class=""> 0 errors</span>,
                     <span class=""> 0 skips</span>,
-                    <span> finished in 0.5174s</span>
+                    <span> finished in 0.6131s</span>
                 </span>
             </div>
             <div class="panel-body">
@@ -554,7 +293,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_create_eyepiece
                                 <span class="pull-right">
-                                    Assertions 2, time 0.069152s
+                                    Assertions 2, time 0.071463s
                                 </span>
                             </h5>
                             
@@ -567,7 +306,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_destroy_eyepiece
                                 <span class="pull-right">
-                                    Assertions 2, time 0.034238s
+                                    Assertions 2, time 0.047524s
                                 </span>
                             </h5>
                             
@@ -580,7 +319,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_edit
                                 <span class="pull-right">
-                                    Assertions 1, time 0.050448s
+                                    Assertions 1, time 0.092755s
                                 </span>
                             </h5>
                             
@@ -593,7 +332,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_index
                                 <span class="pull-right">
-                                    Assertions 1, time 0.172610s
+                                    Assertions 1, time 0.151228s
                                 </span>
                             </h5>
                             
@@ -606,7 +345,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_new
                                 <span class="pull-right">
-                                    Assertions 1, time 0.028411s
+                                    Assertions 1, time 0.088869s
                                 </span>
                             </h5>
                             
@@ -619,7 +358,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_not_create_eyepiece
                                 <span class="pull-right">
-                                    Assertions 1, time 0.085777s
+                                    Assertions 1, time 0.048119s
                                 </span>
                             </h5>
                             
@@ -632,7 +371,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_show_eyepiece
                                 <span class="pull-right">
-                                    Assertions 1, time 0.048317s
+                                    Assertions 1, time 0.064694s
                                 </span>
                             </h5>
                             
@@ -645,7 +384,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_update_eyepiece
                                 <span class="pull-right">
-                                    Assertions 1, time 0.028471s
+                                    Assertions 1, time 0.048400s
                                 </span>
                             </h5>
                             
@@ -659,11 +398,11 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
             <div class="panel-heading"><strong>FiltersControllerTest</strong>
                 <span class="pull-right">
                     <span class="text-info">8 tests</span>,
-                    <span class=""> 10 assertions</span>,
+                    <span class="text-info"> 10 assertions</span>,
                     <span class=""> 0 failures</span>,
                     <span class=""> 0 errors</span>,
                     <span class=""> 0 skips</span>,
-                    <span> finished in 15.3367s</span>
+                    <span> finished in 0.5573s</span>
                 </span>
             </div>
             <div class="panel-body">
@@ -676,7 +415,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_create_filter
                                 <span class="pull-right">
-                                    Assertions 2, time 0.032663s
+                                    Assertions 2, time 0.041443s
                                 </span>
                             </h5>
                             
@@ -689,7 +428,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_destroy_filter
                                 <span class="pull-right">
-                                    Assertions 2, time 0.030313s
+                                    Assertions 2, time 0.045636s
                                 </span>
                             </h5>
                             
@@ -702,7 +441,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_edit
                                 <span class="pull-right">
-                                    Assertions 1, time 0.047834s
+                                    Assertions 1, time 0.062820s
                                 </span>
                             </h5>
                             
@@ -715,7 +454,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_index
                                 <span class="pull-right">
-                                    Assertions 1, time 2.323217s
+                                    Assertions 1, time 0.132253s
                                 </span>
                             </h5>
                             
@@ -728,7 +467,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_new
                                 <span class="pull-right">
-                                    Assertions 1, time 0.065611s
+                                    Assertions 1, time 0.127025s
                                 </span>
                             </h5>
                             
@@ -741,7 +480,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_not_create_filter
                                 <span class="pull-right">
-                                    Assertions 1, time 0.034737s
+                                    Assertions 1, time 0.044145s
                                 </span>
                             </h5>
                             
@@ -754,7 +493,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_show_filter
                                 <span class="pull-right">
-                                    Assertions 1, time 0.045643s
+                                    Assertions 1, time 0.072839s
                                 </span>
                             </h5>
                             
@@ -767,7 +506,225 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_update_filter
                                 <span class="pull-right">
-                                    Assertions 1, time 12.756672s
+                                    Assertions 1, time 0.031174s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>ObservationsControllerTest</strong>
+                <span class="pull-right">
+                    <span class="text-info">7 tests</span>,
+                    <span class="text-info"> 9 assertions</span>,
+                    <span class=""> 0 failures</span>,
+                    <span class=""> 0 errors</span>,
+                    <span class=""> 0 skips</span>,
+                    <span> finished in 0.5802s</span>
+                </span>
+            </div>
+            <div class="panel-body">
+                <div class="list-group">
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_create_observation
+                                <span class="pull-right">
+                                    Assertions 2, time 0.064020s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_destroy_observation
+                                <span class="pull-right">
+                                    Assertions 2, time 0.051896s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_get_edit
+                                <span class="pull-right">
+                                    Assertions 1, time 0.131281s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_get_new
+                                <span class="pull-right">
+                                    Assertions 1, time 0.120525s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_not_create_observation
+                                <span class="pull-right">
+                                    Assertions 1, time 0.070305s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_show_observation
+                                <span class="pull-right">
+                                    Assertions 1, time 0.089734s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_update_observation
+                                <span class="pull-right">
+                                    Assertions 1, time 0.052395s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>ObservativeSessionsControllerTest</strong>
+                <span class="pull-right">
+                    <span class="text-info">7 tests</span>,
+                    <span class="text-info"> 10 assertions</span>,
+                    <span class=""> 0 failures</span>,
+                    <span class=""> 0 errors</span>,
+                    <span class=""> 0 skips</span>,
+                    <span> finished in 1.0156s</span>
+                </span>
+            </div>
+            <div class="panel-body">
+                <div class="list-group">
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_create_observative_session
+                                <span class="pull-right">
+                                    Assertions 2, time 0.051369s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_destroy_observative_session
+                                <span class="pull-right">
+                                    Assertions 3, time 0.144892s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_get_edit
+                                <span class="pull-right">
+                                    Assertions 1, time 0.081192s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_get_index
+                                <span class="pull-right">
+                                    Assertions 1, time 0.225924s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_get_new
+                                <span class="pull-right">
+                                    Assertions 1, time 0.269339s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_show_observative_session
+                                <span class="pull-right">
+                                    Assertions 1, time 0.198467s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_should_update_observative_session
+                                <span class="pull-right">
+                                    Assertions 1, time 0.044383s
                                 </span>
                             </h5>
                             
@@ -781,11 +738,11 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
             <div class="panel-heading"><strong>OutingsControllerTest</strong>
                 <span class="pull-right">
                     <span class="text-info">8 tests</span>,
-                    <span class=""> 11 assertions</span>,
+                    <span class="text-info"> 11 assertions</span>,
                     <span class=""> 0 failures</span>,
                     <span class=""> 0 errors</span>,
                     <span class=""> 0 skips</span>,
-                    <span> finished in 0.4003s</span>
+                    <span> finished in 0.5349s</span>
                 </span>
             </div>
             <div class="panel-body">
@@ -798,7 +755,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_create_outing
                                 <span class="pull-right">
-                                    Assertions 2, time 0.038686s
+                                    Assertions 2, time 0.053626s
                                 </span>
                             </h5>
                             
@@ -811,7 +768,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_destroy_outing
                                 <span class="pull-right">
-                                    Assertions 3, time 0.037038s
+                                    Assertions 3, time 0.039757s
                                 </span>
                             </h5>
                             
@@ -824,7 +781,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_edit
                                 <span class="pull-right">
-                                    Assertions 1, time 0.058368s
+                                    Assertions 1, time 0.084884s
                                 </span>
                             </h5>
                             
@@ -837,7 +794,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_index
                                 <span class="pull-right">
-                                    Assertions 1, time 0.052322s
+                                    Assertions 1, time 0.079178s
                                 </span>
                             </h5>
                             
@@ -850,7 +807,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_new
                                 <span class="pull-right">
-                                    Assertions 1, time 0.026643s
+                                    Assertions 1, time 0.114057s
                                 </span>
                             </h5>
                             
@@ -863,7 +820,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_not_create_outing
                                 <span class="pull-right">
-                                    Assertions 1, time 0.084140s
+                                    Assertions 1, time 0.052383s
                                 </span>
                             </h5>
                             
@@ -876,7 +833,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_show_outing
                                 <span class="pull-right">
-                                    Assertions 1, time 0.055581s
+                                    Assertions 1, time 0.072602s
                                 </span>
                             </h5>
                             
@@ -889,7 +846,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_update_outing
                                 <span class="pull-right">
-                                    Assertions 1, time 0.047476s
+                                    Assertions 1, time 0.038382s
                                 </span>
                             </h5>
                             
@@ -903,11 +860,11 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
             <div class="panel-heading"><strong>TelescopesControllerTest</strong>
                 <span class="pull-right">
                     <span class="text-info">8 tests</span>,
-                    <span class=""> 10 assertions</span>,
+                    <span class="text-info"> 10 assertions</span>,
                     <span class=""> 0 failures</span>,
                     <span class=""> 0 errors</span>,
                     <span class=""> 0 skips</span>,
-                    <span> finished in 0.4954s</span>
+                    <span> finished in 0.5927s</span>
                 </span>
             </div>
             <div class="panel-body">
@@ -920,7 +877,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_create_telescope
                                 <span class="pull-right">
-                                    Assertions 2, time 0.072942s
+                                    Assertions 2, time 0.092716s
                                 </span>
                             </h5>
                             
@@ -933,7 +890,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_destroy_telescope
                                 <span class="pull-right">
-                                    Assertions 2, time 0.036411s
+                                    Assertions 2, time 0.038204s
                                 </span>
                             </h5>
                             
@@ -946,7 +903,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_edit
                                 <span class="pull-right">
-                                    Assertions 1, time 0.055338s
+                                    Assertions 1, time 0.094650s
                                 </span>
                             </h5>
                             
@@ -959,7 +916,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_index
                                 <span class="pull-right">
-                                    Assertions 1, time 0.127375s
+                                    Assertions 1, time 0.149008s
                                 </span>
                             </h5>
                             
@@ -972,7 +929,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_new
                                 <span class="pull-right">
-                                    Assertions 1, time 0.082331s
+                                    Assertions 1, time 0.038509s
                                 </span>
                             </h5>
                             
@@ -985,7 +942,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_not_create_telescope
                                 <span class="pull-right">
-                                    Assertions 1, time 0.044602s
+                                    Assertions 1, time 0.079291s
                                 </span>
                             </h5>
                             
@@ -998,7 +955,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_show_telescope
                                 <span class="pull-right">
-                                    Assertions 1, time 0.047716s
+                                    Assertions 1, time 0.063733s
                                 </span>
                             </h5>
                             
@@ -1011,7 +968,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_update_telescope
                                 <span class="pull-right">
-                                    Assertions 1, time 0.028645s
+                                    Assertions 1, time 0.036562s
                                 </span>
                             </h5>
                             
@@ -1025,11 +982,11 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
             <div class="panel-heading"><strong>UsersControllerTest</strong>
                 <span class="pull-right">
                     <span class="text-info">3 tests</span>,
-                    <span class=""> 5 assertions</span>,
+                    <span class="text-info"> 5 assertions</span>,
                     <span class=""> 0 failures</span>,
                     <span class=""> 0 errors</span>,
                     <span class=""> 0 skips</span>,
-                    <span> finished in 0.2497s</span>
+                    <span> finished in 23.5953s</span>
                 </span>
             </div>
             <div class="panel-body">
@@ -1042,7 +999,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_create_user
                                 <span class="pull-right">
-                                    Assertions 3, time 0.053831s
+                                    Assertions 3, time 0.057657s
                                 </span>
                             </h5>
                             
@@ -1055,7 +1012,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_get_index
                                 <span class="pull-right">
-                                    Assertions 1, time 0.129873s
+                                    Assertions 1, time 0.197547s
                                 </span>
                             </h5>
                             
@@ -1068,7 +1025,7 @@ Expected response to be a <3XX: redirect>, but was a <200: OK></pre>
                                 
                                 test_should_not_create_user
                                 <span class="pull-right">
-                                    Assertions 1, time 0.065998s
+                                    Assertions 1, time 23.340110s
                                 </span>
                             </h5>
                             

@@ -31,8 +31,8 @@ class ObservativeSessionsController < ApplicationController
     @s = Observation.ransack(observative_session_id_eq: @observative_session.id)
     @observations = @s.result.order(params[:order]).paginate(page: params[:page]) if params[:s].present?
     @observations = @s.result.order(params[:order]).paginate(page: params[:page]) unless params[:s].present?
-	@observation = Observation.new
-	@observation.observative_session_id = @observative_session.id
+	@observation = Observation.new(observative_session: @observative_session)
+	@observation.user_id = @observative_session.user_id
   end
 
   # Metodo ereditato dalla classe ApplicationController.
