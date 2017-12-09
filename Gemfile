@@ -76,3 +76,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Scheduling a task to run periodically
+gem 'whenever', '~> 0.9.7', :require => false
+
+# for mail
+gem 'mail'

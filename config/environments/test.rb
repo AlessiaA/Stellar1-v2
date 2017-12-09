@@ -39,4 +39,19 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Parametri necessari per usare l'account gmail del progetto
+  Stellar1::Application.configure do
+    config.action_mailer.delivery_method = :test
+    config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      domain: "domain.of.sender.net",
+      authentication: "plain",
+      user_name: "stellar1.udine",
+      password: "progettoids2",
+      enable_starttls_auto: true
+    }
+  end
+
 end
