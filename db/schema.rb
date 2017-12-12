@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108110443) do
+ActiveRecord::Schema.define(version: 20171212203751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,14 +75,19 @@ ActiveRecord::Schema.define(version: 20171108110443) do
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "celestial_body_name"
     t.bigint "user_id"
     t.bigint "observative_session_id"
-    t.string "telescope_name"
-    t.string "binocular_name"
-    t.string "eyepiece_name"
-    t.string "filter_name"
+    t.bigint "celestial_body_id"
+    t.bigint "telescope_id"
+    t.bigint "binocular_id"
+    t.bigint "eyepiece_id"
+    t.bigint "filter_id"
+    t.index ["binocular_id"], name: "index_observations_on_binocular_id"
+    t.index ["celestial_body_id"], name: "index_observations_on_celestial_body_id"
+    t.index ["eyepiece_id"], name: "index_observations_on_eyepiece_id"
+    t.index ["filter_id"], name: "index_observations_on_filter_id"
     t.index ["observative_session_id"], name: "index_observations_on_observative_session_id"
+    t.index ["telescope_id"], name: "index_observations_on_telescope_id"
     t.index ["user_id"], name: "index_observations_on_user_id"
   end
 

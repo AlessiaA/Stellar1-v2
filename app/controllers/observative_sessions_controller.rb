@@ -33,6 +33,11 @@ class ObservativeSessionsController < ApplicationController
     @observations = @s.result.order(params[:order]).paginate(page: params[:page]) unless params[:s].present?
 	@observation = Observation.new(observative_session: @observative_session)
 	@observation.user_id = @observative_session.user_id
+	@bodies = CelestialBody.order(:name).all
+	@telescopes = Telescope.order(:brand).all
+	@binoculars = Binocular.order(:brand).all
+	@eyepieces = Eyepiece.order(:brand).all
+	@filters = Filter.order(:brand).all
   end
 
   # Metodo ereditato dalla classe ApplicationController.
