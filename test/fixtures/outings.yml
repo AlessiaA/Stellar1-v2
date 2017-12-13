@@ -1,10 +1,10 @@
 # == Schema Information
 #
-# Table name: observative_sessions
+# Table name: outings
 #
 #  id               :integer          not null, primary key
 #  day  			:datetime
-#  location         :string
+#  location_id      :integer
 #  time             :datetime
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
@@ -14,12 +14,12 @@
 
 one:
   day: 2017-09-17
-  location: MyString
+  location_id: 298486374 
   time: 2017-09-17 15:27:43
   
 
 two:
   day: 2017-09-17
-  location: MyString
+  location_id: 298486374
   time: 2017-09-17 15:27:43
   

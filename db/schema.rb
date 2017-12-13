@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171212203751) do
+ActiveRecord::Schema.define(version: 20171213111144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(version: 20171212203751) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.integer "altitude"
+    t.integer "bortle"
+    t.decimal "sqm"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "observations", force: :cascade do |t|
     t.datetime "start_time"
     t.string "description"
@@ -92,7 +103,6 @@ ActiveRecord::Schema.define(version: 20171212203751) do
   end
 
   create_table "observative_sessions", force: :cascade do |t|
-    t.string "name"
     t.datetime "start"
     t.datetime "end"
     t.integer "antoniadi"
@@ -102,22 +112,20 @@ ActiveRecord::Schema.define(version: 20171212203751) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.datetime "date"
-    t.decimal "latitude"
-    t.decimal "longitude"
-    t.integer "altitude"
-    t.integer "bortle"
-    t.decimal "sqm"
     t.boolean "completed"
     t.string "notes"
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_observative_sessions_on_location_id"
     t.index ["user_id"], name: "index_observative_sessions_on_user_id"
   end
 
   create_table "outings", force: :cascade do |t|
     t.datetime "day"
-    t.string "location"
     t.datetime "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_outings_on_location_id"
   end
 
   create_table "telescopes", id: :serial, force: :cascade do |t|

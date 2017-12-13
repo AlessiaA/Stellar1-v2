@@ -13,14 +13,15 @@ class ObservativeSessionsController < ApplicationController
     params[:order] = 'created_at DESC'
 	end
     @q = ObservativeSession.ransack(params[:q])
-    @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
-    @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
+    @observative_sessions = @q.result.includes(:location).order(params[:order]).paginate(page: params[:page]) if params[:q].present?
+    @observative_sessions = @q.result.includes(:location).order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
 	@observative_session = ObservativeSession.new
 	
 	@r = Outing.ransack(params[:r])
 	@outings = @r.result.order('day DESC').paginate(page: params[:page]) if params[:r].present?
     @outings = Outing.order('day DESC').paginate(page: params[:page]) unless params[:r].present?
 	@outing = Outing.new
+	@locations = Location.order(:name).all
  end
 
   # Metodo ereditato dalla classe ApplicationController.
@@ -42,6 +43,7 @@ class ObservativeSessionsController < ApplicationController
 
   # Metodo ereditato dalla classe ApplicationController.
   def edit
+	@locations = Location.order(:name).all
   end
 
   # Questo metodo crea un'istanza di ObservativeSession e la salva nel database.
@@ -50,7 +52,7 @@ class ObservativeSessionsController < ApplicationController
   # visualizzato un messaggio d'errore.
   def create
     @observative_session = current_user.observative_sessions.new(observative_session_params)
-   
+    @locations = Location.order(:name).all
     respond_to do |format|
       if @observative_session.save
         format.html { redirect_to @observative_session, notice: 'Observative session was successfully created.' }
@@ -68,6 +70,7 @@ class ObservativeSessionsController < ApplicationController
   # avverrà una redirezione alla pagina che visualizza i dettagli della sessione osservativa.
   # In caso contrario, verrà visualizzato un messaggio d'errore.
   def update
+	@locations = Location.order(:name).all
     respond_to do |format|
       if @observative_session.update(observative_session_params)
         format.html { redirect_to @observative_session, notice: 'Observative session was successfully updated.' }
@@ -83,6 +86,7 @@ class ObservativeSessionsController < ApplicationController
   # passata alla vista corrispondente all'URL "/observative_sessions/1/edit".
   def new
     @observative_session = ObservativeSession.new
+	@locations = Location.order(:name).all
   end
 
   # Metodo che elimina un'istanza di ObservativeSession. Se l'operazione avviene con
@@ -103,6 +107,6 @@ class ObservativeSessionsController < ApplicationController
     # Metodo che imposta i parametri richiesti e ammessi durante la creazione o la modifica
     # di un'istanza di ObservativeSession.
     def observative_session_params
-      params.require(:observative_session).permit(:date, :start, :end, :name, :latitude, :longitude, :altitude, :bortle, :sqm, :completed, :antoniadi, :pickering, :sky_transparency, :notes)
+      params.require(:observative_session).permit(:date, :start, :end, :location_id, :completed, :antoniadi, :pickering, :sky_transparency, :notes)
     end
 end

@@ -1,0 +1,75 @@
+<% if current_user != 'admin' && Date.today > current_user.subscription_expiration+31.days %>
+<div class="month_expired">
+	<p>La tua sottoscrizione è scaduta da più di un mese non puoi più accedere a queste informazioni</p>
+</div>
+<% else %>
+
+<%= render 'locations/new_modal' %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="panel-title">Lista luoghi osservativi</h1>
+  </div>
+  <div class="panel-body">
+	<% if current_user.role == 'admin' %>
+	<p>
+      Azioni disponibili:
+      <span>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#new-body-modal">Inserisci nuovo luogo osservativo</button>
+      </span>
+    </p>
+	<% end %>
+    <hr>
+	<%= search_form_for @q, { id: '' } do |f| %>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <%= f.label 'Cerca per nome' %>
+            <%= f.search_field :name_cont, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-4 col-sm-offset-4">
+          <div class="form-group">
+            <label for="order">Ordina risultati per</label>
+            <%= select_tag 'order', options_for_select([['Nessuno','created_at DESC'], ['Nome', 'name'], ['Bortle', 'bortle'], ['SQM', 'sqm']], params[:order] || ''), class: 'form-control', onchange: "$('#location_search').submit();" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Latitudine</th>
+		<th>Longitudine</th>
+		<th>Altitudine</th>
+		<th>Scala di Bortle</th>
+		<th>Scala SQM</th>
+        <th colspan="3">Azioni</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @locations.each do |location| %>
+        <tr>
+          <td><%= location.name %></td>
+          <td><%= location.latitude %></td>
+          <td><%= location.longitude %></td>
+		  <td><%= location.altitude %></td>
+          <td><%= location.bortle %></td>
+          <td><%= location.sqm %></td>
+          <td><%= link_to 'Visualizza', location %></td>
+		  <% if current_user.role == 'admin' %>
+          <td><%= link_to 'Modifica', edit_location_path(location) %></td>
+          <td><%= link_to 'Elimina', location, method: :delete, data: { confirm: 'Sei sicuro?' } %></td>
+          <% end %>
+		</tr>
+      <% end %>
+    </tbody>
+  </table>
+  <span><center><%= will_paginate @locations, previous_label: 'Precedente', next_label: 'Successivo' %></center></span>
+</div>
+
+<% end %>
+<%= render 'layouts/footer_logged'%>

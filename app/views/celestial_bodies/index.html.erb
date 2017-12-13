@@ -24,7 +24,7 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="form-group">
-            <%= f.label 'Cerca per nome' %>
+            <%= f.label :name_cont, 'Cerca per nome' %>
             <%= f.search_field :name_cont, class: 'form-control' %>
           </div>
         </div>
@@ -68,7 +68,7 @@
       <% end %>
     </tbody>
   </table>
-  <span><center><%= will_paginate @telescopes, previous_label: 'Precedente', next_label: 'Successivo' %></center></span>
+  <span><center><%= will_paginate @celestial_bodies, previous_label: 'Precedente', next_label: 'Successivo' %></center></span>
 </div>
 
 <% end %>

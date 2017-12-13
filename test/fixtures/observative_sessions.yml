@@ -4,12 +4,7 @@
 #
 #  id               :integer          not null, primary key
 #  date 			:datetime
-#  name             :string
-#  latitude         :decimal
-#  longitude        :decimal
-#  altitude         :integer
-#  bortle           :integer
-#  sqm              :integer
+#  location_id      :integer
 #  completed        :boolean
 #  antoniadi        :integer
 #  pickering        :integer
@@ -25,16 +20,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  location_id: 298486374
   date: 2017-09-17
-  latitude: 1
-  longitude: 1
-  altitude: 1
   completed: false
   start: 2017-09-17 15:27:43
   end: 2017-09-17 15:27:43
-  bortle: 1
-  sqm: 1
   antoniadi: 1
   pickering: 1
   sky_transparency: 1
@@ -42,16 +32,11 @@ one:
   user_id: 764040363
 
 two:
-  name: MyString
+  location_id: 298486374
   date: 2017-09-17
-  latitude: 1
-  longitude: 1
-  altitude: 1
   completed: false
   start: 2017-09-17 15:27:43
   end: 2017-09-17 15:27:43
-  bortle: 1
-  sqm: 1
   antoniadi: 1
   pickering: 1
   sky_transparency: 1

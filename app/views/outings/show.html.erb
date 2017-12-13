@@ -6,7 +6,7 @@
       <div class="panel-heading">Informazioni uscita</div>
       <div class="panel-body">
         <p><span><strong>Giorno:</strong></span> <%= @outing.day %></p>
-        <p><span><strong>Luogo:</strong></span> <%= @outing.location %></p>
+        <p><span><strong>Luogo:</strong></span> <%= @outing.location.name %></p>
         <p><span><strong>Ora:</strong></span> <%= @outing.time %></p>
         <%= link_to 'Modifica', edit_outing_url(@outing) %> |
         <%= link_to 'Indietro', root_path %>

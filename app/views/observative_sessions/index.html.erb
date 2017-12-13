@@ -16,20 +16,15 @@
       <div class="row">
         <div class="col-sm-3">
           <div class="form-group">
-            <%= f.label :date_cont, 'Cerca per data' %>
-            <%= f.search_field :date_cont, class: 'form-control' %>
+            <%= f.label :location_name_cont, 'Cerca per luogo' %>
+            <%= f.search_field :location_name_cont, class: 'form-control' %>
           </div>
         </div>
-        <div class="col-sm-3">
-          <div class="form-group">
-            <%= f.label :name_cont, 'Cerca per luogo' %>
-            <%= f.search_field :name_cont, class: 'form-control' %>
-          </div>
-        </div>
+		
         <div class="col-sm-2 col-sm-offset-4">
           <div class="form-group">
             <label for="order">Ordina risultati per</label>
-            <%= select_tag 'order', options_for_select([['Nessuno','created_at DESC'], ['Data', 'date'], ['Luogo', 'name'], ['Bortle', 'bortle'], ['SQM', 'sqm']], params[:order] || ''), class: 'form-control', onchange: "$('#observative_session_search').submit();" %>
+            <%= select_tag 'order', options_for_select([['Nessuno','created_at DESC'], ['Data', 'date'], ['Luogo', 'locations.name'], ['Bortle', 'locations.bortle'], ['SQM', 'locations.sqm']], params[:order] || ''), class: 'form-control', onchange: "$('#observative_session_search').submit();" %>
           </div>
         </div>
       </div>
@@ -52,9 +47,21 @@
 		<% if observative_session.date != nil %>
 		  <td><%= observative_session.date.strftime("%d/%m/%Y") %></td>
 		<% end %>
-		  <td><%= observative_session.name %></td>
-          <td><%= observative_session.bortle %></td>
-		  <td><%= observative_session.sqm %></td>
+		  <td>
+		  <% if observative_session.location_id != nil %>
+		  <%= observative_session.location.name %>
+		  <% end %>
+		  </td>
+          <td>
+		  <% if observative_session.location_id != nil %>
+		  <%= observative_session.location.bortle %>
+		  <% end %>
+		  </td>
+		  <td>
+		  <% if observative_session.location_id != nil %>
+		  <%= observative_session.location.sqm %>
+		  <% end %>
+		  </td>
           <td><%= link_to 'Visualizza', observative_session %></td>
 		  <% if current_user == 'admin' || Date.today < current_user.subscription_expiration+31.days %>
 			<td><%= link_to 'Modifica', edit_observative_session_path(observative_session) %></td>
