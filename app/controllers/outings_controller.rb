@@ -12,6 +12,7 @@ class OutingsController < ApplicationController
 	@outings = @r.result.ransack(params[:q]).paginate(page: params[:page]) if params[:q].present?
     @outings = Outing.order('day DESC').paginate(page: params[:page]) unless params[:q].present?
 	@outing = Outing.new
+	@locations = Location.order(:name).all
   end
 
   # Metodo ereditato dalla classe ApplicationController.
@@ -24,6 +25,7 @@ class OutingsController < ApplicationController
   # visualizzato un messaggio d'errore.
   def create
     @outing = Outing.new(outing_params)
+	@locations = Location.order(:name).all
 
     respond_to do |format|
       if @outing.save
@@ -40,16 +42,19 @@ class OutingsController < ApplicationController
   # passata alla vista corrispondente all'URL "/outings/1/edit".
   def new
     @outing = Outing.new
+	@locations = Location.order(:name).all
   end
 
   # Metodo ereditato dalla classe ApplicationController.
   def edit
+	@locations = Location.order(:name).all
   end
 
   # Metodo che aggiorna un'istanza di Outing. Se l'operazione avviene con successo,
   # avverrà una redirezione alla pagina che visualizza i dettagli dello strumento aggiornato.
   # In caso contrario, verrà visualizzato un messaggio d'errore.
   def update
+	@locations = Location.order(:name).all
     respond_to do |format|
       if @outing.update(outing_params)
         format.html { redirect_to @outing, notice: 'Outing was successfully updated.' }
@@ -79,6 +84,6 @@ class OutingsController < ApplicationController
     # Metodo che imposta i parametri richiesti e ammessi durante la creazione o la modifica
     # di un'istanza di Outing.
     def outing_params
-      params.require(:outing).permit(:day, :location, :time)
+      params.require(:outing).permit(:day, :location_id, :time)
     end
 end

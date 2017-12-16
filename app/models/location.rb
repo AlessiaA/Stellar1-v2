@@ -9,7 +9,6 @@
 #  altitude         :integer
 #  bortle           :integer
 #  sqm              :integer
-#  notes            :text
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
@@ -18,13 +17,12 @@
 # Classe modello per la tabella "locations".
 #
 class Location < ApplicationRecord
+  # verifica la correttezza dei dati inseriti per i campi specificati
+  validates :name, presence: true
 
   # relazioni
-  has_many :observations, dependent: :destroy
+  has_many :observative_sessions, dependent: :destroy
   has_many :outings, dependent: :destroy
-  
-  def gps
-   "#{latitude} #{longitude}"
-  end
+
 
 end

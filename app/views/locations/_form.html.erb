@@ -1,0 +1,10 @@
+<%= bootstrap_form_for(@location) do |f| %>
+  <%= f.text_field :name, label: 'Nome:' %>
+  <%= f.number_field :latitude, label: 'Latitudine' %> 
+  <%= f.number_field :longitude, label: 'Longitudine' %>
+  <%= f.number_field :altitude, label: 'Altitudine:' %>
+  <p><strong>Qualità del cielo:</strong></p>
+  <%= f.number_field :bortle, step: '1', label: 'Scala di Bortle:' %>
+  <%= f.number_field :sqm, step: '1', label: 'Scala SQM:' %>
+  <%= f.submit 'Conferma' %>
+<% end %>

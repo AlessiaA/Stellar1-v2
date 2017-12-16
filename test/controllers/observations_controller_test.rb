@@ -18,7 +18,7 @@ class ObservationsControllerTest < ActionDispatch::IntegrationTest
   # creazione osservazione
   test "should create observation" do
     assert_difference('Observation.count') do
-      post observative_session_observations_path(@observative_session), params: { observation: { start_time: @observation.start_time, description: @observation.description, rating: @observation.rating, notes: @observation.notes, celestial_body_name: @observation.celestial_body_name, telescope_name: @observation.telescope_name, binocular_name: @observation.binocular_name, eyepiece_name: @observation.eyepiece_name, filter_name: @observation.filter_name, user_id: @observation.user_id, observative_session_id: @observation.observative_session_id }}
+      post observative_session_observations_path(@observative_session), params: { observation: { start_time: @observation.start_time, description: @observation.description, rating: @observation.rating, notes: @observation.notes, celestial_body_id: @observation.celestial_body_id, telescope_id: @observation.telescope_id, binocular_id: @observation.binocular_id, eyepiece_id: @observation.eyepiece_id, filter_id: @observation.filter_id, user_id: @observation.user_id, observative_session_id: @observation.observative_session_id }}
     end
 
     assert_redirected_to observative_session_observation_url(@observative_session, Observation.last)
@@ -26,7 +26,7 @@ class ObservationsControllerTest < ActionDispatch::IntegrationTest
   
    test "should not create observation" do
     assert_no_difference('Observation.count') do
-      post observative_session_observations_path(@observative_session), params: { observation: { start_time: @observation.start_time, description: @observation.description, rating: @observation.rating, notes: @observation.notes, celestial_body_name: '', telescope_name: @observation.telescope_name, binocular_name: @observation.binocular_name, eyepiece_name: @observation.eyepiece_name, filter_name: @observation.filter_name, user_id: @observation.user_id, observative_session_id: @observation.observative_session_id } }
+      post observative_session_observations_path(@observative_session), params: { observation: { start_time: @observation.start_time, description: @observation.description, rating: @observation.rating, notes: @observation.notes, celestial_body_id: '', telescope_id: @observation.telescope_id, binocular_id: @observation.binocular_id, eyepiece_id: @observation.eyepiece_id, filter_id: @observation.filter_id, user_id: @observation.user_id, observative_session_id: @observation.observative_session_id } }
     end
   end
 
@@ -43,7 +43,7 @@ class ObservationsControllerTest < ActionDispatch::IntegrationTest
 
   # aggiornamento osservazione
   test "should update observation" do
-    patch observative_session_observation_url(@observation.observative_session_id, @observation.id), params: { observation: { start_time: @observation.start_time, description: @observation.description, rating: @observation.rating, notes: @observation.notes, celestial_body_name: @observation.celestial_body_name, telescope_name: @observation.telescope_name, binocular_name: @observation.binocular_name, eyepiece_name: @observation.eyepiece_name, filter_name: @observation.filter_name, user_id: @observation.user_id, observative_session_id: @observation.observative_session_id } }
+    patch observative_session_observation_url(@observation.observative_session_id, @observation.id), params: { observation: { start_time: @observation.start_time, description: @observation.description, rating: @observation.rating, notes: @observation.notes, celestial_body_id: @observation.celestial_body_id, telescope_id: @observation.telescope_id, binocular_id: @observation.binocular_id, eyepiece_id: @observation.eyepiece_id, filter_id: @observation.filter_id, user_id: @observation.user_id, observative_session_id: @observation.observative_session_id } }
     assert_redirected_to observative_session_observation_url(@observative_session, @observation)
   end
 

@@ -17,7 +17,7 @@
 		<% if outing.day > Date.today %>
         <tr>
           <td><%= outing.day.strftime("%d/%m/%Y") %><br />
-          <%= outing.location %><br />
+          <%= outing.location.name %><br />
           <%= outing.time.strftime('%H:%M') %><br /><br />
 		  <% if current_user.role == 'admin' %>
           <%= link_to 'Modifica', edit_outing_path(outing) %> |
