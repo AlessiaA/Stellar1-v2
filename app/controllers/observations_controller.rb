@@ -23,22 +23,12 @@ class ObservationsController < ApplicationController
 	@observative_session = ObservativeSession.find(params[:observative_session_id])
     @observation = Observation.new(observative_session: @observative_session)
 	@observation.user_id = @observative_session.user_id
-	@bodies = CelestialBody.order(:name).all
-	@telescopes = Telescope.order(:brand).all
-	@binoculars = Binocular.order(:brand).all
-	@eyepieces = Eyepiece.order(:brand).all
-	@filters = Filter.order(:brand).all
   end
 
   # Metodo ereditato dalla classe ApplicationController.
   def edit
 	@observative_session = ObservativeSession.find(params[:observative_session_id])
 	@observation = @observative_session.observations.find(params[:id])
-	@bodies = CelestialBody.order(:name).all
-	@telescopes = Telescope.order(:brand).all
-	@binoculars = Binocular.order(:brand).all
-	@eyepieces = Eyepiece.order(:brand).all
-	@filters = Filter.order(:brand).all
   end
 
   # Questo metodo crea un'istanza di Observation e la salva nel database.
@@ -49,11 +39,7 @@ class ObservationsController < ApplicationController
     @observative_session = ObservativeSession.find(params[:observative_session_id])
     @observation = @observative_session.observations.build(observation_params)
 	@observation.user_id = current_user.id
-	@bodies = CelestialBody.order(:name).all
-	@telescopes = Telescope.order(:brand).all
-	@binoculars = Binocular.order(:brand).all
-	@eyepieces = Eyepiece.order(:brand).all
-	@filters = Filter.order(:brand).all
+	
     respond_to do |format|
       if @observation.save
         format.html { redirect_to [@observative_session, @observation], notice: 'Observation was successfully created.' }
@@ -99,6 +85,6 @@ class ObservationsController < ApplicationController
     # Metodo che imposta i parametri richiesti e ammessi durante la creazione o la modifica
     # di un'istanza di Observation.
     def observation_params
-      params.require(:observation).permit(:start_time, :celestial_body_id, :telescope_id, :binocular_id, :filter_id, :eyepiece_id, :rating, :description, :notes)
+      params.require(:observation).permit(:start_time, :celestial_body_name, :telescope_name, :binocular_name, :filter_name, :eyepiece_name, :rating, :description, :notes)
     end
 end

@@ -44,17 +44,9 @@
 		  <%= observation.start_time.strftime("%H:%M") %>
 		<% end %>
 		</td>
-		  <td><%= observation.celestial_body.name %></td>
-		  <td>
-		  <% if observation.telescope_id != nil %>
-          <%= observation.telescope.name %>
-		  <% end %>
-		  </td>
-		  <td>
-		  <% if observation.binocular_id != nil %>
-		  <%= observation.binocular.name %>
-		  <% end %>
-		  </td>
+		  <td><%= observation.celestial_body_name %></td>
+          <td><%= observation.telescope_name %></td>
+		  <td><%= observation.binocular_name %></td>
 		  <td><%= observation.user.name %></td>
           <td><%= link_to 'Visualizza', observative_session_observation_path(@observative_session, observation) %></td>
 		  <% if current_user == 'admin' || Date.today < current_user.subscription_expiration+31.days %>

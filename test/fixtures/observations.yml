@@ -4,10 +4,10 @@
 #
 #  id                     :integer          not null, primary key
 #  start_time             :datetime
-#  telescope_id           :integer
-#  binocular_id           :integer
-#  eyepiece_id            :integer
-#  filter_id 			  :integer
+#  telescope_name         :integer
+#  binocular_name         :integer
+#  eyepiece_name          :integer
+#  filter_name			  :integer
 #  rating                 :integer
 #  description            :string
 #  image                  :integer
@@ -15,7 +15,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  user_id                :integer          not null
-#  celestial_body_id      :integer
+#  celestial_body_name    :integer
 #  observative_session_id :integer          not null
 #
 
@@ -23,11 +23,11 @@
 
 one:
   start_time: 2017-09-17 10:22:16
-  celestial_body_id: 298486374
-  telescope_id: 980190962
-  binocular_id: 298486374
-  eyepiece_id: 298486374
-  filter_id: 980190962
+  celestial_body_name: Mars
+  telescope_name: MyString
+  binocular_name: MyString
+  eyepiece_name: MyString
+  filter_name: MyString
   description: MyString
   rating: 1
   notes: MyString
@@ -36,11 +36,11 @@ one:
 
 two:
   start_time: 2017-09-17 10:22:16
-  celestial_body_id: 298486374
-  telescope_id: 980190962
-  binocular_id: 298486374
-  eyepiece_id: 298486374
-  filter_id: 980190962
+  celestial_body_name: Mars
+  telescope_name: MyString
+  binocular_name: MyString
+  eyepiece_name: MyString
+  filter_name: MyString
   description: MyString
   rating: 1
   notes: MyString

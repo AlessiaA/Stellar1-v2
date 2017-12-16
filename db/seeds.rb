@@ -12,17 +12,7 @@ user.save
 
 User.first.update(role: :admin)
 
-user = User.new
-user.name = "Tizio"
-user.surname = "Caio"
-user.email = "tizio@mail.com"
-user.password = "tiziocaio"
-user.birth = Faker::Date.birthday(20,70)
-user.subscription_expiration = Faker::Date.between(Date.today, 1.year.from_now)
-user.save
-
 NUMBER_OF_USERS = 100
-NUMBER_OF_LOCATIONS = 20
 NUMBER_OF_FILTERS = 50
 NUMBER_OF_TELESCOPES = 50
 NUMBER_OF_BINOCULARS = 100
@@ -129,15 +119,4 @@ NUMBER_OF_BODIES.times do |i|
   celestial_body.save
   
 end 
-
-NUMBER_OF_LOCATIONS.times do |i|
-  location = Location.new
-  location.name = Faker::Address.unique.city
-  location.latitude = Faker::Number.unique.decimal(3)
-  location.longitude = Faker::Number.unique.decimal(3)
-  location.altitude = Faker::Number.between(1, 5000)
-  location.bortle = Faker::Number.between(1, 10)
-  location.sqm = Faker::Number.decimal(2)
-  location.save
-end
 

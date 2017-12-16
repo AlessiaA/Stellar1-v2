@@ -4,9 +4,9 @@
 #
 #  id                     :integer          not null, primary key
 #  start_time             :datetime
-#  telescope_id           :integer
-#  binocular_id           :integer
-#  eyepiece_id            :integer
+#  telescope_name         :integer
+#  binocular_name         :integer
+#  eyepiece_name          :integer
 #  filter_id			  :integer
 #  rating                 :integer
 #  description            :string
@@ -15,7 +15,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  user_id                :integer          not null
-#  celestial_body_id      :integer          not null
+#  celestial_body_name    :integer
 #  observative_session_id :integer          not null
 #
 

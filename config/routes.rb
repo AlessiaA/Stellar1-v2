@@ -26,9 +26,6 @@ Rails.application.routes.draw do
   
   # OUTINGS
   resources :outings
-  # LOCATIONS
-  resources :locations
-  
   root to: 'application#index'
   
 end

@@ -15,7 +15,6 @@
 #  pickering        :integer
 #  sky_transparency :integer
 #  user_id          :integer         not null
-#  location_id      :integer         not null
 #  start            :time
 #  end              :time
 #  notes            :text
@@ -30,7 +29,6 @@ class ObservativeSession < ApplicationRecord
   
   # relazioni
   belongs_to :user
-  belongs_to :location, optional: true
   has_many :observations, dependent: :destroy
 
 end

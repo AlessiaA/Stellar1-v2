@@ -9,7 +9,28 @@
     <%= f.time_field :end, label: 'Ora di fine' %>
 	 </div>
    <div class="col-sm-12">
-  <%= f.collection_select :location_id, @locations, :id, :name, include_blank: true, label: 'Luogo' %>
+  <%= f.text_field :name, label: 'Nome del luogo:' %>
+  </div>
+  <div class="col-sm-12">
+  <p><strong>Coordinate:</strong></p>
+  </div>
+  <div class="col-sm-4">
+  <%= f.number_field :latitude, label: 'Latitudine' %> 
+  </div>
+  <div class="col-sm-4">
+  <%= f.number_field :longitude, label: 'Longitudine' %>
+  </div>
+  <div class="col-sm-3">
+  <%= f.number_field :altitude, label: 'Altitudine:' %>
+  </div>
+  <div class="col-sm-12">
+  <p><strong>Qualità del cielo:</strong></p>
+  </div>
+  <div class="col-sm-5">
+  <%= f.number_field :bortle, step: '1', label: 'Scala di Bortle:' %>
+  </div>
+  <div class="col-sm-5">
+  <%= f.number_field :sqm, step: '1', label: 'Scala SQM:' %>
   </div>
   <div class="col-sm-12">
   <p><strong>Seeing astronomico:</strong></p>

@@ -28,15 +28,14 @@ class ApplicationController < ActionController::Base
     params[:order] = 'created_at DESC'
 	end
     @q = ObservativeSession.ransack(user_id_eq: current_user.id)
-    @observative_sessions = @q.result.includes(:location).order(params[:order]).paginate(page: params[:page]) if params[:q].present?
-    @observative_sessions = @q.result.includes(:location).order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
+    @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
+    @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
     @observative_session = ObservativeSession.new
 	
 	@r = Outing.ransack(params[:r])
 	@outings = @r.result.order('day DESC').paginate(page: params[:page]) if params[:r].present?
     @outings = Outing.order('day DESC').paginate(page: params[:page]) unless params[:r].present?
 	@outing = Outing.new
-	@locations = Location.order(:name).all
 	# visualizza la lista degli utenti iscritti.
     render 'observative_sessions/index'
   end
@@ -47,15 +46,14 @@ class ApplicationController < ActionController::Base
     params[:order] = 'created_at DESC'
 	end
 	@q = ObservativeSession.ransack(user_id_eq: current_user.id)
-    @observative_sessions = @q.result.includes(:location).order(params[:order]).paginate(page: params[:page]) if params[:q].present?
-    @observative_sessions = @q.result.includes(:location).order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
+    @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) if params[:q].present?
+    @observative_sessions = @q.result.order(params[:order]).paginate(page: params[:page]) unless params[:q].present?
 	@observative_session = ObservativeSession.new
     
 	@r = Outing.ransack(params[:q])
 	@outings = @r.result.order('day DESC').paginate(page: params[:page]) if params[:q].present?
     @outings = Outing.order('day DESC').paginate(page: params[:page]) unless params[:q].present?
 	@outing = Outing.new
-	@locations = Location.order(:name).all
 	# visualizza la pagina iniziale degli utenti ordinari.
 	render 'observative_sessions/index'
   end

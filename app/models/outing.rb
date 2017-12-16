@@ -8,7 +8,6 @@
 #  time				  :time				
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  location_id        :integer         not null
 #
 
 #
@@ -16,8 +15,6 @@
 #
 class Outing < ApplicationRecord
   # verifica la correttezza dei dati inseriti per i campi specificati.
-  validates :day, :location_id, :time, presence: true
-  
-  belongs_to :location
+  validates :day, :location, :time, presence: true
   
 end

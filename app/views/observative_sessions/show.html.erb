@@ -16,37 +16,12 @@
 		<%= @observative_session.end.strftime("%H:%M") %>
 		<% end %>
 		</p>
-		<p><span><strong>Nome del luogo:</strong></span>
-		<% if @observative_session.location_id != nil %>
-		<%= @observative_session.location.name %>
-		<% end %>
-		</p>
-        <p><span><strong>Coordinate:</strong></span><br /> Latitudine: 
-		<% if @observative_session.location_id != nil %>
-		<%= @observative_session.location.latitude %>
-        <% end %>
-		&emsp;Longitudine: 
-		<% if @observative_session.location_id != nil %>
-		<%= @observative_session.location.longitude %>
-		<% end %>
-		&emsp;Altitudine: 
-		<% if @observative_session.location_id != nil %>
-		<%= @observative_session.location.altitude %>
-		<% end %>
-		m
-		</p>
-        <p><span><strong>Qualità del cielo:</strong></span><br /> Scala di Bortle: 
-		<% if @observative_session.location_id != nil %>
-		<%= @observative_session.location.bortle %>
-		<% end %>
-		&emsp;Scala SQM: 
-		<% if @observative_session.location_id != nil %>
-		<%= @observative_session.location.sqm %>
-		<% end %>
-		</p>
-        <p><span><strong>Seeing astronomico:</strong></span><br /> Scala di Antoniadi: <%= @observative_session.antoniadi %> &emsp;Scala di pickering: <%= @observative_session.pickering %></p>
-		<p><span><strong>Trasparenza del cielo: </strong></span><%= @observative_session.sky_transparency %></p>
-		<p><span><strong>Finalizzata: </strong></span> 
+		<p><span><strong>Nome del luogo:</strong></span><%= @observative_session.name %></p>
+        <p><span><strong>Coordinate:</strong></span><br /> Latitudine:<%= @observative_session.latitude %> &emsp;Longitudine:<%= @observative_session.longitude %> &emsp;Altitudine:<%= @observative_session.altitude %></p>
+        <p><span><strong>Qualità del cielo:</strong></span><br /> Scala di Bortle:<%= @observative_session.bortle %> &emsp;Scala SQM:<%= @observative_session.sqm %></p>
+        <p><span><strong>Seeing astronomico:</strong></span><br /> Scala di Antoniadi:<%= @observative_session.antoniadi %> &emsp;Scala di pickering:<%= @observative_session.pickering %></p>
+		<p><span><strong>Trasparenza del cielo:</strong></span><%= @observative_session.sky_transparency %></p>
+		<p><span><strong>Finalizzata:</strong></span> 
 		<% if @observative_session.completed == true %>
 			Si
 		<% else %>
